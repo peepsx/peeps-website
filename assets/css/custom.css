@@ -1,0 +1,119 @@
+/* 
+/* 
+/*  custom.css
+/*
+/*  If not using Gulp and Sass, add your custom CSS below then include it
+/*  in your page by adding a reference to assets/css/custom.css in the head of each page.
+/*
+*/
+.margin-20{
+    margin: 20px 0;
+}
+.label{
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 5px;
+}
+.navbar-brand img {
+    max-width: 35px;
+}
+.center-text{
+    text-align: center;
+}
+
+
+/* Footer */
+.bg-white {
+    background-color: #fff !important;
+}
+.text-gray{
+    color:rgb(83, 86, 86);
+}
+a.text-gray:hover {
+    color: rgb(0,0,0);
+}
+.footer-logo {
+    max-width: 50px;
+}
+.trademark {
+    font-size: 14px;
+}
+.powered-by img {
+    max-width: 30px;
+}
+
+/* blocks */
+.logo-rounded {
+    height: 200px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    width: 200px;
+    margin: auto;
+}
+.logo-rounded img {
+    width: 7rem;
+}
+.down-arrow {
+    color: rgb(71, 116, 182);
+}
+.description {
+    color: rgb(83, 86, 86);
+    font-size: 16px;
+}
+.bg-light {
+    background-color: rgb(243, 236, 222)  !important
+}
+.bg-opaque {
+    background-color: #000;
+}
+.replace {
+    position: absolute;
+    bottom: 0;
+    right: 10px;
+    color: rgb(83, 86, 86);
+}
+.btn-white {
+    background-color: rgb(243, 236, 222);
+    color: rgb(71, 116, 182);
+    margin: 10px 0;
+}
+.btn-support {
+    background-color: rgb(71, 116, 182);
+    color: rgb(243, 236, 222);
+    margin: 10px 0;
+}
+.btn-support:hover {
+    color: rgb(243, 236, 222);
+}
+.btn-black {
+    background-color: rgb(0,0,0);
+    color: rgb(83, 86, 86);
+}
+.btn-black:hover {
+    color: rgb(83, 86, 86);
+}
+
+.arrow {
+    margin: 20px;
+    font-size: 30px;
+}
+.bounce {
+    -moz-animation: bounce 2s infinite;
+    -webkit-animation: bounce 2s infinite;
+    animation: bounce 2s infinite;
+  }
+  
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-10px);
+    }
+    60% {
+      transform: translateY(-5px);
+    }
+  }
