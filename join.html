@@ -7,6 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Signup to join our Patriots Club and help support our movement to bring freedom back to the Internet.">
     <meta name="keywords" content="dweb search engine, search dweb, search dapps, search dsites">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="assets/img/logo/peepsLogo.png">
+    
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Nunito:400,400i,600,600i,700,700i%7cPermanent+Marker" rel="stylesheet">
    
@@ -236,77 +239,80 @@
             <div class="">
                 <h1 class="display-4 font-alt-1">Join The Patriots Club.</h1>
                 <p class="description" style="font-size: 12px;">Fill out the form below and all required fields to become a member.</p>
-              
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                        <input name="name" type="text"  id="fname" placeholder="First Name*">
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                        <input name="name" type="text"  id="lname" placeholder="Last Name*">
-                                </div>
+                    <form>
+                      <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                    <input name="name" type="text"  class="form-control" id="fname" placeholder="First Name*">
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                        <input name="name" type="text"  id="addressone" placeholder="Address1*">
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                 <div class="form-group">
-                                        <input name="name" type="text" id="addresstwo"  placeholder="Address2*">
-                                </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                    <input name="name" type="text" class="form-control" id="lname" placeholder="Last Name*">
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <div class="form-group">
-                                        <input name="name" type="text" id="city"  placeholder="City*">
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="form-group">
-                                        <input name="name" type="text" id="state"  placeholder="State*">
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                    <div class="form-group">
-                                        <input name="name" type="number" id="zipcode"  placeholder="Zip Code*">
-                                    </div>
-                            </div>
-                            <div class="col-sm-3">
-                                    <div class="form-group">
-                                        <input name="name" type="text" id="country"  placeholder="Country*">
-                                    </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                    <input name="name" type="text" class="form-control" id="addressone" placeholder="Address1*">
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                        <input name="phone" type="number" id="phoneno"  placeholder="Phone*">
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                        <input name="email" type="email" id="email"  placeholder="Email*">
-                                </div>
+                        <div class="col-sm-6">
+                             <div class="form-group">
+                                    <input name="name" type="text" class="form-control" id="addresstwo"  placeholder="Address2*">
                             </div>
                         </div>
-                        <p>Payment Options</p>
-                        <div class="flex-container payment-optn">
-                          <div id="paypal-button-container"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                    <input name="name" type="text" class="form-control" id="city"  placeholder="City*">
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                    <input name="name" type="text" class="form-control" id="state"  placeholder="State*">
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                                <div class="form-group">
+                                    <input name="name" type="number" class="form-control" id="zipcode"  placeholder="Zip Code*">
+                                </div>
+                        </div>
+                        <div class="col-sm-3">
+                                <div class="form-group">
+                                    <input name="name" type="text" class="form-control" id="country"  placeholder="Country*">
+                                </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                    <input name="phone" type="number" class="form-control" id="phoneno"  placeholder="Phone*">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                    <input name="email" type="email" class="form-control" id="email"  placeholder="Email*">
+                            </div>
+                        </div>
+                    </div>
+                    <p>Payment Options</p>
+                         <div class="payment-box">
+                            <div class="flex-container payment-optn">
+                                  <div id="paypal-button-container"></div>
 
-                          <button type="button" class="btn btn-sm btn-blue" data-toggle="modal"
-                              data-target="#myModal">Pay With Card</button>
-
-                      </div>
+                                  <button type="button" class="btn btn-primary btn-blue" data-toggle="modal"
+                                    data-target="#myModal">Pay With Card</button>
+  
+                          </div>
+                        </div>
                         <div class="become-member" style="margin: 20px 0;">
                             <button class="btn btn-lg btn-primary btn-block mb-1" onclick="peepsmember()">Become a Peeps Member</button>
                         </div>
-                
+
+                    </form>
                 
               </div>
         </div>

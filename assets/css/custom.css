@@ -124,11 +124,9 @@ a.text-gray:hover {
 .modal-content {
     background-color: #fefefe;
     margin: 15% auto;
-    /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
-    /* Could be more or less, depending on screen size */
   }
   
   /* The Close Button */
@@ -154,7 +152,6 @@ a.text-gray:hover {
   /* -----------------------new stripe payment style---------- */
   
   form {
-    width: 521px;
     margin: 20px 0;
   }
   
@@ -162,8 +159,6 @@ a.text-gray:hover {
     position: relative;
     color: #6A7C94;
     font-weight: 400;
-    height: 48px;
-    line-height: 48px;
     margin-bottom: 10px;
     display: flex;
     flex-direction: row;
@@ -197,26 +192,9 @@ a.text-gray:hover {
   }
   
   button {
-    float: left;
-    display: block;
     color: white;
-    border-radius: 24px;
-    border: 0;
-    margin-top: 20px;
-    font-size: 17px;
-    font-weight: 500;
-    width: 100%;
-    height: 48px;
-    line-height: 48px;
-    outline: none;
   }
-  
-  
-  
-  button:active {
-    background: #E17422;
-  }
-  
+ 
   .outcome {
     float: left;
     width: 100%;
@@ -266,6 +244,7 @@ a.text-gray:hover {
       opacity: 1;
       text-shadow: none;
       color: #fff;
+      padding: 10px;
   }
   .swal-button{
       line-height: 30px;
@@ -284,4 +263,25 @@ a.text-gray:hover {
   .bold-para {
       font-weight: 600 !important;
   }
+  div#paypal-button-container {
+    max-width: 160px;
+    display: inline-block;
+    position: relative;
+    top: 16px;
+}
+.btn-blue {
+    background: #0070ba;
+    border-radius: 43px;
+    height: 40px;
+}
+.modal-title {
+  margin: auto;
+}
+.pay-btn {
+  text-align: center;
+}
+.pay-btn button {
+  min-width: 100px;
+  margin: 10px;
+}
   
