@@ -117,3 +117,171 @@ a.text-gray:hover {
       transform: translateY(-5px);
     }
   }
+
+  /* ---------stripe ===paypal=======styles */
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    /* Could be more or less, depending on screen size */
+  }
+  
+  /* The Close Button */
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .modal-dialog {
+    max-width: 950px;
+  }
+  
+  
+  /* -----------------------new stripe payment style---------- */
+  
+  form {
+    width: 521px;
+    margin: 20px 0;
+  }
+  
+  label {
+    position: relative;
+    color: #6A7C94;
+    font-weight: 400;
+    height: 48px;
+    line-height: 48px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+  }
+  
+  label > span {
+    width: 140px;
+  }
+  
+  .field {
+    background: white;
+    box-sizing: border-box;
+    font-weight: 400;
+    border: 1px solid #CFD7DF;
+    border-radius: 24px;
+    color: #32315E;
+    outline: none;
+    flex: 1;
+    height: 48px;
+    line-height: 48px;
+    padding: 0 20px;
+    cursor: text;
+  }
+  
+  .field::-webkit-input-placeholder { color: #CFD7DF; }
+  .field::-moz-placeholder { color: #CFD7DF; }
+  
+  .field:focus,
+  .field.StripeElement--focus {
+    border-color: #F99A52;
+  }
+  
+  button {
+    float: left;
+    display: block;
+    color: white;
+    border-radius: 24px;
+    border: 0;
+    margin-top: 20px;
+    font-size: 17px;
+    font-weight: 500;
+    width: 100%;
+    height: 48px;
+    line-height: 48px;
+    outline: none;
+  }
+  
+  
+  
+  button:active {
+    background: #E17422;
+  }
+  
+  .outcome {
+    float: left;
+    width: 100%;
+    padding-top: 8px;
+    min-height: 20px;
+    text-align: center;
+  }
+  
+  .success, .error {
+    display: none;
+    font-size: 13px;
+  }
+  
+  .success.visible, .error.visible {
+    display: inline;
+  }
+  
+  .error {
+    color: #E4584C;
+  }
+  
+  .success {
+    color: #F8B563;
+  }
+  
+  .success .token {
+    font-weight: 500;
+    font-size: 13px;
+  }
+  
+  
+    /* ----------------loader design------------- */
+    
+    #loading {
+      background: url('../img/logo-we-need-for/loader.gif') no-repeat center center;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      z-index: 9999999;
+  }
+  .modal-header .close {
+      margin: 0;
+      background-color: #0070ba;
+      background-image: none;
+      opacity: 1;
+      text-shadow: none;
+      color: #fff;
+  }
+  .swal-button{
+      line-height: 30px;
+  }
+  
+  /* email template */
+  .emai-logo img {
+      max-width: 150px;
+  }
+  .email-content h1 {
+      text-align: center;
+  }
+  .email-content {
+      padding: 50px;
+  }
+  .bold-para {
+      font-weight: 600 !important;
+  }
+  

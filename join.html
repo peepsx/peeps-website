@@ -12,9 +12,16 @@
    
     <link href="assets/css/theme.css" rel="stylesheet" type="text/css" media="all">
     <link href="assets/css/custom.css" rel="stylesheet">
+     <!-- stripe payment js -->
+     <script src="https://js.stripe.com/v3/"></script>
+     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
     
   </head>
-  <body>
+  <body onload="showModal()">
+
+    <div id="loading"></div>
+
 <!--------------------------------- Header Block Start --------------------------->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-0">
       <div class="container">
@@ -229,78 +236,120 @@
             <div class="">
                 <h1 class="display-4 font-alt-1">Join The Patriots Club.</h1>
                 <p class="description" style="font-size: 12px;">Fill out the form below and all required fields to become a member.</p>
-                <form>
+              
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                        <input name="name" type="text" class="form-control"  placeholder="First Name*">
+                                        <input name="name" type="text"  id="fname" placeholder="First Name*">
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                        <input name="name" type="text" class="form-control"  placeholder="Last Name*">
+                                        <input name="name" type="text"  id="lname" placeholder="Last Name*">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                        <input name="name" type="text" class="form-control"  placeholder="Address1*">
+                                        <input name="name" type="text"  id="addressone" placeholder="Address1*">
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                  <div class="form-group">
-                                        <input name="name" type="text" class="form-control"  placeholder="Address2*">
+                                        <input name="name" type="text" id="addresstwo"  placeholder="Address2*">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-3">
                                 <div class="form-group">
-                                        <input name="name" type="text" class="form-control"  placeholder="City*">
+                                        <input name="name" type="text" id="city"  placeholder="City*">
                                 </div>
                             </div>
                             <div class="col-sm-3">
                                 <div class="form-group">
-                                        <input name="name" type="text" class="form-control"  placeholder="State*">
+                                        <input name="name" type="text" id="state"  placeholder="State*">
                                 </div>
                             </div>
                             <div class="col-sm-3">
                                     <div class="form-group">
-                                        <input name="name" type="text" class="form-control"  placeholder="Zip Code*">
+                                        <input name="name" type="number" id="zipcode"  placeholder="Zip Code*">
                                     </div>
                             </div>
                             <div class="col-sm-3">
                                     <div class="form-group">
-                                        <input name="name" type="text" class="form-control"  placeholder="Country*">
+                                        <input name="name" type="text" id="country"  placeholder="Country*">
                                     </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                        <input name="phone" type="tel" class="form-control"  placeholder="Phone*">
+                                        <input name="phone" type="number" id="phoneno"  placeholder="Phone*">
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                        <input name="email" type="email" class="form-control"  placeholder="Email*">
+                                        <input name="email" type="email" id="email"  placeholder="Email*">
                                 </div>
                             </div>
                         </div>
                         <p>Payment Options</p>
-                        <div class="payment-box">
-                            <button class="btn btn-primary" type="submit">PayPal</button>
-                            <button class="btn btn-primary" type="submit">Pay With Card</button>
-                        </div>
+                        <div class="flex-container payment-optn">
+                          <div id="paypal-button-container"></div>
+
+                          <button type="button" class="btn btn-sm btn-blue" data-toggle="modal"
+                              data-target="#myModal">Pay With Card</button>
+
+                      </div>
                         <div class="become-member" style="margin: 20px 0;">
-                            <button class="btn btn-lg btn-primary btn-block mb-1" type="submit">Become a Peeps Member</button>
+                            <button class="btn btn-lg btn-primary btn-block mb-1" onclick="peepsmember()">Become a Peeps Member</button>
                         </div>
-                </form>
+                
                 
               </div>
         </div>
       </div>
+
+ <!-- Modal stripe payment-->
+ <div class="modal " id="myModal" role="dialog">
+  <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Subscribe to Stripe Payment</h4>
+          </div>
+          <div class="modal-body">
+              <form class="stripeform">
+                  <label>
+                      <span>Name</span>
+                      <input name="cardholder-name" class="field" placeholder="Jane Doe" />
+                  </label>
+                  <label>
+                      <span>Card</span>
+                      <div id="card-element" class="field"></div>
+                  </label>
+                  <div class="pay-btn"><button type="submit" class="btn btn-sm btn-blue">Pay
+                          $5</button></div>
+                  <div class="outcome">
+                      <div class="error"></div>
+                  </div>
+              </form>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-sm btn-blue"
+                  data-dismiss="modal">Close</button>
+          </div>
+      </div>
+
+  </div>
+</div>
+
+<!-- ------------------------------modal stripe ends---------- -->
+
     </div>
   </section>
 
@@ -402,6 +451,13 @@
     <script type="text/javascript" src="assets/js/theme.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.1/axios.min.js"></script>
     <script type="text/javascript" src="assets/js/custom/custom.js"></script>
+    <script src="assets/js/components/hs.modal-window.js"></script>
+    <script>
+      function showModal() {
+          document.getElementById("loading").style.display = "none";
+      }
+  </script>
+
     <script>
       // Rix price
       axios.get('https://nv6khovry9.execute-api.us-east-1.amazonaws.com/dev/rsn_price_from_bts')
@@ -413,6 +469,319 @@
             });
 
     </script>
+
+    <!-- -------paypal payment---------- -->
+    <script
+    src="https://www.paypal.com/sdk/js?client-id=Aes7-mZ9lsMi3h-m6lZ-eIQFBaUoF_hpHW1fF8bEZ5a59vZvzeTg75ZZc78g5h5igwkSABHfvlDQk8VQ&vault=true"
+    data-sdk-integration-source="button-factory">
+    </script>
+
+    <script>
+      // Render the PayPal button into #paypal-button-container
+      paypal.Buttons({
+          // createOrder: function (data, actions) {
+          //     console.log('=========createorder====', data, actions)
+          //     return actions.order.create({
+          //         purchase_units: [{
+          //             amount: {
+          //                 value: '5.00'
+          //             }
+          //         }]
+          //     });
+          // },
+
+          // onApprove: function (data, actions) {
+          //     return actions.order.capture().then(function (details) {
+          //         console.log('=======daetails', details, data, actions)
+          //         // Show a success message to the buyer
+          //         alert('Transaction completed by ' + details.payer.name.given_name + '!');
+          //     });
+          // },
+
+          //button style
+          style: {
+              layout: 'horizontal',
+              color: 'blue',
+              shape: 'pill',
+              height: 40,
+              label: 'subscribe',
+              tagline: false
+          },
+
+          createSubscription: function (data, actions) {
+
+              return actions.subscription.create({
+                  'plan_id': 'P-7MG6534019154735TL4FSIZI'
+              });
+          },
+          onCancel: function (data) {
+              swal({title:"User has cancelled the payment.",icon:'warning'});
+              document.getElementById("loading").style.display = "none";
+
+          },
+          onApprove: function (data, actions) {
+              swal("Your payment is Successful.", `Your SubscriptionId is: ${data.subscriptionID}`, "success");
+              
+              let object = {
+                  "orderID": data.orderID,
+                  "billingToken": data.billingToken,
+                  "subscriptionID": data.subscriptionID,
+                  "facilitatorAccessToken": data.facilitatorAccessToken
+              }
+
+              axios.post('http://localhost:3000/users/paypalpayment', object).then((result) => {
+                  localStorage.setItem("paypalsubId", data.subscriptionID)
+                  localStorage.setItem("paypalstatus", "active")
+                  localStorage.setItem('paymentType', "paypal")
+              }).catch((error) => {
+                  console.log(error)
+              })
+
+          }
+      }).render('#paypal-button-container');
+  </script>
+
+  <!-- =============modal start========== -->
+  <script>
+    // Get the modal
+    var modal = document.getElementById("myModal");
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
+<!-- ============modal ends=========== -->
+
+<script>
+  var stripe = Stripe('pk_live_51H0hOeJ5nSY4c5DAvFEuc6pmikZ6QUcUTTbbe9duhfYsUCadDTukQRP077ZzOS7GSmJVQWZFskgX4tAQVgJmnGCL00Iw2Cy1Tz');
+  var elements = stripe.elements({
+      fonts: [
+          {
+              family: 'Open Sans',
+              weight: 400,
+              src: 'local("Open Sans"), local("OpenSans"), url(https://fonts.gstatic.com/s/opensans/v13/cJZKeOuBrn4kERxqtaUH3ZBw1xU1rKptJj_0jans920.woff2) format("woff2")',
+              unicodeRange: 'U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215',
+          },
+      ]
+  });
+
+  var card = elements.create('card', {
+      hidePostalCode: true,
+      style: {
+          base: {
+              iconColor: '#F99A52',
+              color: 'black',
+              lineHeight: '48px',
+              fontWeight: 400,
+              fontFamily: '"Open Sans", "Helvetica Neue", "Helvetica", sans-serif',
+              fontSize: '15px',
+              '::placeholder': {
+                  color: '#CFD7DF',
+              }
+          },
+      }
+  });
+  card.mount('#card-element');
+
+  function setOutcome(result, name) {
+      // var successElement = document.querySelector('.success');
+      var errorElement = document.querySelector('.error');
+      // successElement.classList.remove('visible');
+      errorElement.classList.remove('visible');
+
+      if (result.token) {
+
+          this.payment(result.token, name)
+
+
+          $('#myModal').modal('hide');
+
+          document.getElementById("loading").style.display = "block";
+
+          // Use the token to create a charge or a customer
+          // https://stripe.com/docs/charges
+          //successElement.querySelector('.token').textContent = result.token.id;
+          //successElement.classList.add('visible');
+      } else if (result.error) {
+          errorElement.textContent = result.error.message;
+          errorElement.classList.add('visible');
+      }
+  }
+
+  card.on('change', function (event) {
+      setOutcome(event);
+  });
+
+  document.querySelector('.stripeform').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      var form = document.querySelector('.stripeform');
+      var extraDetails = {
+          name: form.querySelector('input[name=cardholder-name]').value,
+      };
+      stripe.createToken(card, extraDetails).then(result => {
+          setOutcome(result, extraDetails.name)
+      });
+  });
+
+  async function payment(token, name) {
+      let object = {
+          "name": name,
+          "token": token.id
+      }
+      axios.post('http://localhost:3000/users/payment', object).then((result) => {
+          localStorage.setItem("stripedata", result.data.data.id)
+          localStorage.setItem("stripestatus", result.data.data.status)
+          localStorage.setItem('paymentType', "Stripe")
+          document.getElementById("loading").style.display = "none";
+          swal("Your payment is Successful.", `Your SubscriptionId is: ${result.data.data.id}`, "success");
+      }).catch((error) => {
+          console.log('error block stripe payment', error)
+      })
+  }
+</script>
+
+
+<script>
+  function peepsmember() {
+      //commont type
+      let paymenttype = localStorage.getItem('paymentType')
+      //let regemail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+      let fname = document.getElementById('fname').value
+      let lname = document.getElementById('lname').value
+      let addressone = document.getElementById('addressone').value
+      let addresstwo = document.getElementById('addresstwo').value
+      let city = document.getElementById('city').value
+      let state = document.getElementById('state').value
+      let zipcode = document.getElementById('zipcode').value
+      let country = document.getElementById('country').value
+      let phoneno = document.getElementById('phoneno').value
+      let email = document.getElementById('email').value
+      if (fname == "" || fname == null) {
+          swal({ title: "Enter first name!", icon: "warning" });
+          return
+      } else if (!isNaN(fname)) {
+          swal({ title: "Enter valid first name!", icon: "warning" });
+          return
+      } else if (lname == "" || lname == null) {
+          swal({ title: "Enter your last name!", icon: "warning" });
+          return
+      } else if (!isNaN(lname)) {
+          swal({ title: "Enter valid last name!", icon: "warning" });
+          return
+      } else if (addressone == "" || addressone == null) {
+          swal({ title: "Enter your first address!", icon: "warning" });
+          return
+      } else if (addresstwo == "" || addresstwo == null) {
+          swal({ title: "Enter your second address!", icon: "warning" });
+          return
+      } else if (city == "" || city == null) {
+          swal({ title: "Enter city name!", icon: "warning" });
+          return
+      } else if (!isNaN(city)) {
+          swal({ title: "Enter valid city name!", icon: "warning" });
+          return
+      } else if (state == "" || state == null) {
+          swal({ title: "Enter your state name!", icon: "warning" });
+          return
+      } else if (!isNaN(state)) {
+          swal({ title: "Enter valid state name!", icon: "warning" });
+          return
+      } else if (zipcode == "" || zipcode == null) {
+          swal({ title: "Enter your zipcoe!", icon: "warning" });
+          return
+      } else if (country == "" || country == null) {
+          swal({ title: "Enter your country name!", icon: "warning" });
+          return
+      } else if (!isNaN(country)) {
+          swal({ title: "Enter valid country name!", icon: "warning" });
+          return
+      } else if (phoneno == "" || phoneno == null) {
+          swal({ title: "Enter your phone number!", icon: "warning" });
+          return
+      } else if (email == "" || email == null) {
+          swal({ title: "Enter your Email!", icon: "warning" });
+          return
+      } else {
+          if (paymenttype == 'Stripe') {
+              let subsid = localStorage.getItem('stripedata')
+              let subsstatus = localStorage.getItem('stripestatus')
+              let objdata = {
+                  "fName": fname,
+                  "lName": lname,
+                  "addressOne": addressone,
+                  "addressTwo": addresstwo,
+                  "city": city,
+                  "state": state,
+                  "zipcode": zipcode,
+                  "country": country,
+                  "phoneNo": phoneno,
+                  "email": email,
+                  "paymenttype": paymenttype,
+                  "subscriptionId": subsid,
+                  "subscriptionStatus": subsstatus
+              }
+              axios.post('https://payments.peepsx.com/users/saveuser', objdata).then((response) => {
+                  if (response) {
+                      console.log(response.data)
+                      swal({ title: `${response.data.message}`, icon: "warning" });
+                      if (response.data.status) {
+                          localStorage.clear()
+                      }
+                  } else {
+                      swal({ title: "Something went wrong,Please try again!", icon: "warning" });
+                  }
+              }).catch((error) => {
+                  console.log(error)
+              })
+          }
+          else if (paymenttype == 'paypal') {
+              let subsid = localStorage.getItem("paypalsubId")
+              let subsstatus = localStorage.getItem("paypalstatus")
+              let objdata = {
+                  "fName": fname,
+                  "lName": lname,
+                  "addressOne": addressone,
+                  "addressTwo": addresstwo,
+                  "city": city,
+                  "state": state,
+                  "zipcode": zipcode,
+                  "country": country,
+                  "phoneNo": phoneno,
+                  "email": email,
+                  "paymenttype": paymenttype,
+                  "subscriptionId": subsid,
+                  "subscriptionStatus": subsstatus
+              }
+              axios.post('http://localhost:3000/users/saveuser', objdata).then((response) => {
+                  if (response) {
+                      console.log(response.data)
+                      swal({ title: "You are peeps member now.", icon: "success" });
+                      localStorage.clear()
+                  } else {
+                      swal({ title: "Something went wrong,Please try again!", icon: "warning" });
+                  }
+              }).catch((error) => {
+                  console.log(error)
+              })
+          }
+          else {
+              swal({ title: "Please complete your payment!", icon: "warning" });
+          }
+      }
+  }
+</script>
+
+
+
 
   </body>
 </html>
