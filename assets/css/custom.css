@@ -6,6 +6,12 @@
 /*  in your page by adding a reference to assets/css/custom.css in the head of each page.
 /*
 */
+/* .modelcancel {
+  position: absolute;
+  right: 204px;
+  bottom: 56px;
+  width: 98px;
+} */
 .increase-width {
   width: 112%;
 }

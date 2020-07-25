@@ -319,7 +319,7 @@
       <!-- Modal content-->
       <div class="modal-content">
           <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
               <h4 class="modal-title">Subscribe to Stripe Payment</h4>
           </div>
           <div class="modal-body">
@@ -332,16 +332,19 @@
                       <span>Card</span>
                       <div id="card-element" class="field"></div>
                   </label>
-                  <div class="pay-btn"><button type="submit" class="btn btn-sm btn-blue">Pay
-                          $5</button></div>
+                  <div class="pay-btn">
+                    <button type="submit" class="btn btn-sm btn-blue">Pay$5</button>
+                    <button type="button" class="btn btn-sm btn-blue" data-dismiss="modal">Close</button>
+                    </div>
                   <div class="outcome">
                       <div class="error"></div>
                   </div>
+                  
               </form>
+              
           </div>
-          <div class="modal-footer">
-              <button type="button" class="btn btn-sm btn-blue"
-                  data-dismiss="modal">Close</button>
+          <!-- <div class="modal-footer"> -->
+              
           </div>
       </div>
 
