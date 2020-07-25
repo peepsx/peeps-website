@@ -19,12 +19,12 @@
   </head>
   <body>
 <!--------------------------------- Header Block Start --------------------------->
-<nav class="navbar navbar-expand-lg navbar-light bg-white">
+<nav class="navbar navbar-expand-lg navbar-light bg-white" style="padding:5px 0;">
   <div class="container">
     <a class="navbar-brand" href="index.html">
       <img alt="Insight" src="assets/img/logo/peepsLogo.png">
     </a>
-    <div class="d-flex order-lg-3 ml-lg-2">
+    <div class="d-flex order-lg-3 ml-lg-5">
       <a href="https://signup.peepsid.com" class="btn btn-primary">Create PeepsID</a>
       <button class="navbar-toggler ml-2" type="button" data-toggle="collapse" data-target=".navMenu" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -56,14 +56,14 @@
             </li>
           </ul>
         </div>
-        <form>
-          <div class="input-group input-group-round">
+        <form onsubmit="myFunction()">
+          <div class="input-group input-group-round increase-width">
             <div class="input-group-prepend">
               <span class="input-group-text" id="input-group-search-2">
                 <i class="material-icons">search</i>
               </span>
             </div>
-            <input type="search" class="form-control" placeholder="Search PeepsIDs and more..." aria-label="Search">
+            <input type="search" id="searchid" class="form-control" placeholder="Search PeepsIDs and more..." aria-label="Search">
           </div>
         </form>
       </div>

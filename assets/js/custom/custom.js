@@ -11,3 +11,9 @@ $('a[href^="#"]').on('click', function(event) {
     }
 
 });
+// Search bar
+function myFunction(){
+    let value = document.getElementById("searchid").value
+    // console.log("mmmmmm",value)
+    window.open(`https://explorer.arisen.network/account/${value}`)
+}

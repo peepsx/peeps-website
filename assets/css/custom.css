@@ -6,6 +6,9 @@
 /*  in your page by adding a reference to assets/css/custom.css in the head of each page.
 /*
 */
+.increase-width {
+  width: 112%;
+}
 .ppl-bar {
   text-align: center;
   background-color: rgb(128, 0, 128);
@@ -160,9 +163,7 @@ a.text-gray:hover {
   
   /* -----------------------new stripe payment style---------- */
   
-  form {
-    margin: 20px 0;
-  }
+  
   
   label {
     position: relative;
