@@ -233,7 +233,7 @@
             <div class="">
                 <h1 class="display-4 font-alt-1">Join The Patriots Club.</h1>
                 <p class="description" style="font-size: 12px;">Fill out the form below and all required fields to become a member.</p>
-                    <form>
+              
                       <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group">
@@ -306,7 +306,7 @@
                             <button class="btn btn-lg btn-primary btn-block mb-1" onclick="peepsmember()">Become a Peeps Member</button>
                         </div>
 
-                    </form>
+            
                 
               </div>
         </div>
@@ -561,7 +561,7 @@
 <!-- ============modal ends=========== -->
 
 <script>
-  var stripe = Stripe('pk_live_51H0hOeJ5nSY4c5DAvFEuc6pmikZ6QUcUTTbbe9duhfYsUCadDTukQRP077ZzOS7GSmJVQWZFskgX4tAQVgJmnGCL00Iw2Cy1Tz');
+  var stripe = Stripe('pk_test_51H0hOeJ5nSY4c5DA2cfV1Tv6LG1GbKx2wLunxpRedM2MngFTgty1g1tEJQXhwSe28lgDsHcfl0Xy6OiVGvr1sSYs00Ovbdmo9v');
   var elements = stripe.elements({
       fonts: [
           {
@@ -729,7 +729,7 @@
                   "subscriptionId": subsid,
                   "subscriptionStatus": subsstatus
               }
-              axios.post('https://payments.peepsx.com/users/saveuser', objdata).then((response) => {
+              axios.post('http://localhost:3000/users/saveuser', objdata).then((response) => {
                   if (response) {
                       console.log(response.data)
                       swal({ title: `${response.data.message}`, icon: "warning" });
