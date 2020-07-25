@@ -283,7 +283,7 @@
                       <div class="form-group">
                         <div class="custom-control custom-radio mb-1">
                           <input type="radio" id="amountRadio1" name="amountRadio" class="custom-control-input"
-                            value="25" checked="checked">
+                            value="100" checked="checked">
                           <label class="custom-control-label" for="amountRadio1">$100</label>
                         </div>
 
@@ -533,8 +533,8 @@
         <!-- Modal content -->
         <div class="modal-content">
           <div class="modal-header">
-            <span class="close">&times;</span>
-            <h4 class="modal-title">Fill your Card Details.</h4>
+            <!-- <span class="close">&times;</span> -->
+            <h4 class="modal-title">Fill Your Card Details.</h4>
           </div>
           <div class="modal-body">
             <form class="stripeform">
@@ -596,7 +596,7 @@
   </script>
   <script>
     // --------------first next button----------------
-    var amount = 25;
+    var amount = 100;
     function firstNextButton() {
       console.log('first next button')
       if (document.getElementById('amountRadio1').checked) {
@@ -808,6 +808,89 @@
           console.log('error block stripe payment', error)
       })
   }
+</script>
+
+<script
+src="https://www.paypal.com/sdk/js?client-id=Aes7-mZ9lsMi3h-m6lZ-eIQFBaUoF_hpHW1fF8bEZ5a59vZvzeTg75ZZc78g5h5igwkSABHfvlDQk8VQ&vault=true"
+data-sdk-integration-source="button-factory">
+</script>
+<!-- JS Plugins Init. -->
+<script>
+axios.get('https://nv6khovry9.execute-api.us-east-1.amazonaws.com/dev/rsn_price_from_bts')
+    .then(function (response) {
+        document.getElementById('rix-price').innerHTML = `RIX: $ ${parseFloat(response.data.data.USD.price).toFixed(4)}`;
+    })
+    .catch(function (error) {
+        console.log(error)
+    });
+</script>
+
+<script>
+// Render the PayPal button into #paypal-button-container
+paypal.Buttons({
+
+
+
+    createOrder: function (data, actions) {
+        console.log('=========createorder====', data, actions)
+        return actions.order.create({
+            purchase_units: [{
+                amount: {
+                    value:amount
+                }
+            }]
+        });
+    },
+
+    onApprove: function (data, actions) {
+        return actions.order.capture().then(function (details) {
+            console.log('=======daetails', details, data, actions)
+            // Show a success message to the buyer
+            alert('Transaction completed by ' + details.payer.name.given_name + '!');
+        });
+    },
+
+    // button style
+    style: {
+        layout: 'horizontal',
+        color: 'blue',
+        shape: 'pill',
+        height: 40,
+        label: 'subscribe',
+        tagline: false
+    },
+
+    // createSubscription: function (data, actions) {
+
+    //     return actions.subscription.create({
+    //         'plan_id': 'P-7MG6534019154735TL4FSIZI'
+    //     });
+    // },
+    // onCancel: function (data) {
+    //     swal({title:"User has cancelled the payment.",icon:'warning'});
+    //     document.getElementById("loading").style.display = "none";
+
+    // },
+    // onApprove: function (data, actions) {
+    //     swal("Your payment is Successful.", `Your SubscriptionId is: ${data.subscriptionID}`, "success");
+        
+    //     let object = {
+    //         "orderID": data.orderID,
+    //         "billingToken": data.billingToken,
+    //         "subscriptionID": data.subscriptionID,
+    //         "facilitatorAccessToken": data.facilitatorAccessToken
+    //     }
+
+    //     axios.post('https://payments.peepsx.com/users/paypalpayment', object).then((result) => {
+    //         localStorage.setItem("paypalsubId", data.subscriptionID)
+    //         localStorage.setItem("paypalstatus", "active")
+    //         localStorage.setItem('paymentType', "paypal")
+    //     }).catch((error) => {
+    //         console.log(error)
+    //     })
+
+    // }
+}).render('#paypal-button-container');
 </script>
 
 
