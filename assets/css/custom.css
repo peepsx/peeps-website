@@ -6,6 +6,16 @@
 /*  in your page by adding a reference to assets/css/custom.css in the head of each page.
 /*
 */
+.ppl-bar {
+  text-align: center;
+  background-color: rgb(128, 0, 128);
+  margin: auto;
+  padding: 10px;
+}
+.ppl-bar p {
+  margin: 0;
+  color: #fff;
+}
 .margin-20{
     margin: 20px 0;
 }
@@ -61,7 +71,6 @@ a.text-gray:hover {
 }
 .description {
     color: rgb(83, 86, 86);
-    font-size: 16px;
 }
 .bg-light {
     background-color: rgb(243, 236, 222)  !important
