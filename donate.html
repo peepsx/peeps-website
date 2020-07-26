@@ -859,18 +859,33 @@
       },
 
       onApprove: function (data, actions) {
-        return actions.order.capture().then(function (details, err) {
+        return actions.order.capture().then(function (details) {
+          console.log('=======daetails', details, data, actions)
+          window.location = "#fourth"
+          document.getElementById("amountdonated").innerHTML = amount;
+          let object = {
+            "amount": amount,
+            "transectionId": data.orderID,
+            "paymentStatus": "success",
+            "fname": fname,
+            "lname": lname,
+            "email": email,
+            "addressOne": addressone,
+            "addressTwo": addresstwo,
+            "city": city,
+            "state": state,
+            "zipcode": zipcode,
+            "country": country
 
-          if (err) {
-            window.location = "#third"
-            swal({ title: "Sorry, but your payment has failed. Please try again.", icon: 'warning' });
-          } else {
-            console.log('=======daetails', details, data, actions)
-            window.location = "#fourth"
-            document.getElementById("amountdonated").innerHTML = amount;
-            // Show a success message to the buyer
-            // alert('Transaction completed by ' + details.payer.name.given_name + '!');
           }
+          axios.post('http://localhost:3000/users/paypalonetimepayment', object).then((result) => {
+            console.log('onetimepaypalresult', result)
+          }).catch((error) => {
+            console.log(error)
+          })
+          // Show a success message to the buyer
+          // alert('Transaction completed by ' + details.payer.name.given_name + '!');
+
         });
       },
       onCancel: function (data) {
