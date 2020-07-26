@@ -387,23 +387,22 @@
 
                   <!-- </form> -->
 
-                  <button class="btn btn-primary sw-btn-next margin-20" type="submit" onclick="secondNextButton()">Next
-                    Step</button>
+                  <button class="btn" type="button" onclick="secondNextButton()">Next Step</button>
+
                 </div>
               </div>
               <div id="third">
                 <div class="card-body py-4">
                   <h3>Choose payment method for your donation.</h3>
                   <!-- <form> -->
-                  <div class="custom-control custom-radio mb-1">
-                    <input type="radio" id="paymentRadio1" name="paymentRadio" class="custom-control-input"
-                      value="Stripe" checked>
-                    <label class="custom-control-label" for="paymentRadio1">Credit Card / Debit Card</label>
-                  </div>
-                  <div class="custom-control custom-radio">
-                    <input type="radio" id="paymentRadio2" name="paymentRadio" class="custom-control-input"
-                      value="Paypal">
-                    <label class="custom-control-label" for="paymentRadio2">PayPal</label>
+                  <div class="payment-box">
+                    <div class="flex-container payment-optn">
+                      <div id="paypal-button-container"></div>
+
+                      <button type="button" class="btn btn-primary btn-blue" data-toggle="modal"
+                        data-target="#myModal">Pay With Card</button>
+
+                    </div>
                   </div>
                   <!-- </form> -->
                   <button class="btn" type="button" onclick="thirdNextButton()">Next Step</button>
@@ -527,41 +526,44 @@
           </div>
         </div> -->
 
-      <!-- The Modal -->
-      <div id="myModal" class="modal">
+      <!-- Modal stripe payment-->
+      <div class="modal " id="myModal" role="dialog">
+        <div class="modal-dialog">
 
-        <!-- Modal content -->
-        <div class="modal-content">
-          <div class="modal-header">
-            <!-- <span class="close">&times;</span> -->
-            <h4 class="modal-title">Fill Your Card Details.</h4>
-          </div>
-          <div class="modal-body">
-            <form class="stripeform">
-              <label>
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+              <h4 class="modal-title">Fill Your Card Details.</h4>
+            </div>
+            <div class="modal-body">
+              <form class="stripeform">
+                <label>
                   <span>Name</span>
                   <input name="cardholder-name" class="field" placeholder="Jane Doe" />
-              </label>
-              <label>
+                </label>
+                <label>
                   <span>Card</span>
                   <div id="card-element" class="field"></div>
-              </label>
-              <div class="pay-btn">
-                <button type="submit" class="btn btn-sm btn-blue">Pay</button>
-                <button type="button" class="btn btn-sm btn-blue" data-dismiss="modal">Close</button>
+                </label>
+                <div class="pay-btn">
+                  <button type="submit" class="btn btn-sm btn-blue">Pay</button>
+                  <button type="button" class="btn btn-sm btn-blue" data-dismiss="modal">Close</button>
                 </div>
-              <div class="outcome">
+                <div class="outcome">
                   <div class="error"></div>
-              </div>
-              
-          </form>
+                </div>
+
+              </form>
+
+            </div>
+            <!-- <div class="modal-footer"> -->
+
           </div>
-          <!-- <div class="modal-footer">
-            <h3>Modal Footer</h3>
-          </div> -->
         </div>
 
       </div>
+      <!-- ------------------------------modal stripe ends---------- -->
 
     </div>
   </footer>
@@ -668,6 +670,7 @@
         return
       }
       console.log('elsecase', fname, lname, email, addressone, addresstwo, city, state, zipcode, country)
+      window.location = "#third"
 
     }
 
@@ -691,26 +694,17 @@
 
   </script>
 
+
+  <!-- =============modal start========== -->
   <script>
     // Get the modal
     var modal = document.getElementById("myModal");
-
-    // Get the button that opens the modal
-    var btn = document.getElementById("myBtn");
-
     // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0];
-
-    // When the user clicks the button, open the modal 
-    btn.onclick = function () {
-      modal.style.display = "block";
-    }
-
     // When the user clicks on <span> (x), close the modal
     span.onclick = function () {
       modal.style.display = "none";
     }
-
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function (event) {
       if (event.target == modal) {
@@ -718,39 +712,40 @@
       }
     }
   </script>
+  <!-- ============modal ends=========== -->
 
-<script>
-  var stripe = Stripe('pk_test_51H0hOeJ5nSY4c5DA2cfV1Tv6LG1GbKx2wLunxpRedM2MngFTgty1g1tEJQXhwSe28lgDsHcfl0Xy6OiVGvr1sSYs00Ovbdmo9v');
-  var elements = stripe.elements({
+  <script>
+    var stripe = Stripe('pk_test_51H0hOeJ5nSY4c5DA2cfV1Tv6LG1GbKx2wLunxpRedM2MngFTgty1g1tEJQXhwSe28lgDsHcfl0Xy6OiVGvr1sSYs00Ovbdmo9v');
+    var elements = stripe.elements({
       fonts: [
-          {
-              family: 'Open Sans',
-              weight: 400,
-              src: 'local("Open Sans"), local("OpenSans"), url(https://fonts.gstatic.com/s/opensans/v13/cJZKeOuBrn4kERxqtaUH3ZBw1xU1rKptJj_0jans920.woff2) format("woff2")',
-              unicodeRange: 'U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215',
-          },
+        {
+          family: 'Open Sans',
+          weight: 400,
+          src: 'local("Open Sans"), local("OpenSans"), url(https://fonts.gstatic.com/s/opensans/v13/cJZKeOuBrn4kERxqtaUH3ZBw1xU1rKptJj_0jans920.woff2) format("woff2")',
+          unicodeRange: 'U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215',
+        },
       ]
-  });
+    });
 
-  var card = elements.create('card', {
+    var card = elements.create('card', {
       hidePostalCode: true,
       style: {
-          base: {
-              iconColor: '#F99A52',
-              color: 'black',
-              lineHeight: '48px',
-              fontWeight: 400,
-              fontFamily: '"Open Sans", "Helvetica Neue", "Helvetica", sans-serif',
-              fontSize: '15px',
-              '::placeholder': {
-                  color: '#CFD7DF',
-              }
-          },
+        base: {
+          iconColor: '#F99A52',
+          color: 'black',
+          lineHeight: '48px',
+          fontWeight: 400,
+          fontFamily: '"Open Sans", "Helvetica Neue", "Helvetica", sans-serif',
+          fontSize: '15px',
+          '::placeholder': {
+            color: '#CFD7DF',
+          }
+        },
       }
-  });
-  card.mount('#card-element');
+    });
+    card.mount('#card-element');
 
-  function setOutcome(result, name) {
+    function setOutcome(result, name) {
       // var successElement = document.querySelector('.success');
       var errorElement = document.querySelector('.error');
       // successElement.classList.remove('visible');
@@ -758,140 +753,140 @@
 
       if (result.token) {
 
-          this.payment(result.token, name)
+        this.payment(result.token, name)
 
 
-          $('#myModal').modal('hide');
+        $('#myModal').modal('hide');
 
-          document.getElementById("loading").style.display = "block";
+        document.getElementById("loading").style.display = "block";
 
-          // Use the token to create a charge or a customer
-          // https://stripe.com/docs/charges
-          //successElement.querySelector('.token').textContent = result.token.id;
-          //successElement.classList.add('visible');
+        // Use the token to create a charge or a customer
+        // https://stripe.com/docs/charges
+        //successElement.querySelector('.token').textContent = result.token.id;
+        //successElement.classList.add('visible');
       } else if (result.error) {
-          errorElement.textContent = result.error.message;
-          errorElement.classList.add('visible');
+        errorElement.textContent = result.error.message;
+        errorElement.classList.add('visible');
       }
-  }
+    }
 
-  card.on('change', function (event) {
+    card.on('change', function (event) {
       setOutcome(event);
-  });
+    });
 
-  document.querySelector('.stripeform').addEventListener('submit', function (e) {
+    document.querySelector('.stripeform').addEventListener('submit', function (e) {
       e.preventDefault();
 
       var form = document.querySelector('.stripeform');
       var extraDetails = {
-          name: form.querySelector('input[name=cardholder-name]').value,
+        name: form.querySelector('input[name=cardholder-name]').value,
       };
       stripe.createToken(card, extraDetails).then(result => {
-          setOutcome(result, extraDetails.name)
+        setOutcome(result, extraDetails.name)
       });
-  });
+    });
 
-  async function payment(token, name) {
+    async function payment(token, name) {
       let object = {
-          "name": name,
-          "token": token.id,
-          "amount":amount
+        "name": name,
+        "token": token.id,
+        "amount": amount
       }
       axios.post('http://localhost:3000/users/onetimepayment', object).then((result) => {
-        console.log('==========',result)
-          // localStorage.setItem("stripedata", result.data.data.id)
-          // localStorage.setItem("stripestatus", result.data.data.status)
-          // localStorage.setItem('paymentType', "Stripe")
-          // document.getElementById("loading").style.display = "none";
-          // swal("Your payment is Successful.", `Your SubscriptionId is: ${result.data.data.id}`, "success");
+        console.log('==========', result)
+        // localStorage.setItem("stripedata", result.data.data.id)
+        // localStorage.setItem("stripestatus", result.data.data.status)
+        // localStorage.setItem('paymentType', "Stripe")
+        // document.getElementById("loading").style.display = "none";
+        // swal("Your payment is Successful.", `Your SubscriptionId is: ${result.data.data.id}`, "success");
       }).catch((error) => {
-          console.log('error block stripe payment', error)
+        console.log('error block stripe payment', error)
       })
-  }
-</script>
+    }
+  </script>
 
-<script
-src="https://www.paypal.com/sdk/js?client-id=Aes7-mZ9lsMi3h-m6lZ-eIQFBaUoF_hpHW1fF8bEZ5a59vZvzeTg75ZZc78g5h5igwkSABHfvlDQk8VQ&vault=true"
-data-sdk-integration-source="button-factory">
-</script>
-<!-- JS Plugins Init. -->
-<script>
-axios.get('https://nv6khovry9.execute-api.us-east-1.amazonaws.com/dev/rsn_price_from_bts')
-    .then(function (response) {
+  <script
+    src="https://www.paypal.com/sdk/js?client-id=Aes7-mZ9lsMi3h-m6lZ-eIQFBaUoF_hpHW1fF8bEZ5a59vZvzeTg75ZZc78g5h5igwkSABHfvlDQk8VQ&vault=true"
+    data-sdk-integration-source="button-factory">
+    </script>
+  <!-- JS Plugins Init. -->
+  <script>
+    axios.get('https://nv6khovry9.execute-api.us-east-1.amazonaws.com/dev/rsn_price_from_bts')
+      .then(function (response) {
         document.getElementById('rix-price').innerHTML = `RIX: $ ${parseFloat(response.data.data.USD.price).toFixed(4)}`;
-    })
-    .catch(function (error) {
+      })
+      .catch(function (error) {
         console.log(error)
-    });
-</script>
+      });
+  </script>
 
-<script>
-// Render the PayPal button into #paypal-button-container
-paypal.Buttons({
+  <script>
+    // Render the PayPal button into #paypal-button-container
+    paypal.Buttons({
 
 
 
-    createOrder: function (data, actions) {
+      createOrder: function (data, actions) {
         console.log('=========createorder====', data, actions)
         return actions.order.create({
-            purchase_units: [{
-                amount: {
-                    value:amount
-                }
-            }]
+          purchase_units: [{
+            amount: {
+              value: amount
+            }
+          }]
         });
-    },
+      },
 
-    onApprove: function (data, actions) {
+      onApprove: function (data, actions) {
         return actions.order.capture().then(function (details) {
-            console.log('=======daetails', details, data, actions)
-            // Show a success message to the buyer
-            alert('Transaction completed by ' + details.payer.name.given_name + '!');
+          console.log('=======daetails', details, data, actions)
+          // Show a success message to the buyer
+          alert('Transaction completed by ' + details.payer.name.given_name + '!');
         });
-    },
+      },
 
-    // button style
-    style: {
+      // button style
+      style: {
         layout: 'horizontal',
         color: 'blue',
         shape: 'pill',
         height: 40,
         label: 'subscribe',
         tagline: false
-    },
+      },
 
-    // createSubscription: function (data, actions) {
+      // createSubscription: function (data, actions) {
 
-    //     return actions.subscription.create({
-    //         'plan_id': 'P-7MG6534019154735TL4FSIZI'
-    //     });
-    // },
-    // onCancel: function (data) {
-    //     swal({title:"User has cancelled the payment.",icon:'warning'});
-    //     document.getElementById("loading").style.display = "none";
+      //     return actions.subscription.create({
+      //         'plan_id': 'P-7MG6534019154735TL4FSIZI'
+      //     });
+      // },
+      // onCancel: function (data) {
+      //     swal({title:"User has cancelled the payment.",icon:'warning'});
+      //     document.getElementById("loading").style.display = "none";
 
-    // },
-    // onApprove: function (data, actions) {
-    //     swal("Your payment is Successful.", `Your SubscriptionId is: ${data.subscriptionID}`, "success");
-        
-    //     let object = {
-    //         "orderID": data.orderID,
-    //         "billingToken": data.billingToken,
-    //         "subscriptionID": data.subscriptionID,
-    //         "facilitatorAccessToken": data.facilitatorAccessToken
-    //     }
+      // },
+      // onApprove: function (data, actions) {
+      //     swal("Your payment is Successful.", `Your SubscriptionId is: ${data.subscriptionID}`, "success");
 
-    //     axios.post('https://payments.peepsx.com/users/paypalpayment', object).then((result) => {
-    //         localStorage.setItem("paypalsubId", data.subscriptionID)
-    //         localStorage.setItem("paypalstatus", "active")
-    //         localStorage.setItem('paymentType', "paypal")
-    //     }).catch((error) => {
-    //         console.log(error)
-    //     })
+      //     let object = {
+      //         "orderID": data.orderID,
+      //         "billingToken": data.billingToken,
+      //         "subscriptionID": data.subscriptionID,
+      //         "facilitatorAccessToken": data.facilitatorAccessToken
+      //     }
 
-    // }
-}).render('#paypal-button-container');
-</script>
+      //     axios.post('https://payments.peepsx.com/users/paypalpayment', object).then((result) => {
+      //         localStorage.setItem("paypalsubId", data.subscriptionID)
+      //         localStorage.setItem("paypalstatus", "active")
+      //         localStorage.setItem('paymentType', "paypal")
+      //     }).catch((error) => {
+      //         console.log(error)
+      //     })
+
+      // }
+    }).render('#paypal-button-container');
+  </script>
 
 
 </body>
