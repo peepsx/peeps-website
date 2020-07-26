@@ -831,6 +831,11 @@
           alert('Transaction completed by ' + details.payer.name.given_name + '!');
         });
       },
+      onCancel: function (data) {
+          swal({title:"User has cancelled the payment.",icon:'warning'});
+          document.getElementById("loading").style.display = "none";
+
+      },
 
       // button style
       style: {
