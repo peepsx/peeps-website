@@ -422,8 +422,7 @@
               <div id="fourth">
                 <div class="card-body py-4">
                   <h3>Thank you so much for your donation of $<spam id="amountdonated"></spam> and helping further this
-                    decentralized dream of
-                    ours!</h3>
+                    decentralized dream of ours.Your TransectionId is <spam id="TransectionId"></spam></h3>
                   <!-- <button class="btn btn-success" type="submit">Submit</button> -->
                 </div>
               </div>
@@ -807,10 +806,11 @@
         "country": country
       }
       axios.post('http://localhost:3000/users/onetimepayment', object).then((result) => {
-        console.log('==========', result.data)
+        console.log('==========', result.data,"=======",result)
         if (result.data.status == true) {
           window.location = "#fourth"
           document.getElementById("amountdonated").innerHTML = amount;
+          document.getElementById("TransectionId").innerHTML = result.data.
         } else {
           window.location = "#third"
           swal({ title: "Sorry, but your payment has failed. Please try again.", icon: 'warning' });
@@ -860,29 +860,38 @@
 
       onApprove: function (data, actions) {
         return actions.order.capture().then(function (details) {
-          console.log('=======daetails', details, data, actions)
-          window.location = "#fourth"
-          document.getElementById("amountdonated").innerHTML = amount;
-          let object = {
-            "amount": amount,
-            "transectionId": data.orderID,
-            "paymentStatus": "success",
-            "fname": fname,
-            "lname": lname,
-            "email": email,
-            "addressOne": addressone,
-            "addressTwo": addresstwo,
-            "city": city,
-            "state": state,
-            "zipcode": zipcode,
-            "country": country
+          if (details.status == "COMPLETED") {
+            console.log('=======daetails', details, data, actions)
+            window.location = "#fourth"
+            document.getElementById("amountdonated").innerHTML = amount;
+            document.getElementById("TransectionId").innerHTML = details.id
+
+            let object = {
+              "amount": amount,
+              "transectionId": details.id,
+              "paymentStatus": details.status,
+              "fname": fname,
+              "lname": lname,
+              "email": email,
+              "addressOne": addressone,
+              "addressTwo": addresstwo,
+              "city": city,
+              "state": state,
+              "zipcode": zipcode,
+              "country": country
+
+            }
+            axios.post('http://localhost:3000/users/paypalonetimepayment', object).then((result) => {
+              console.log('onetimepaypalresult', result)
+            }).catch((error) => {
+              console.log(error)
+            })
+
+          } else {
+            window.location = "#third"
+            swal({ title: "Sorry, but your payment has failed. Please try again.", icon: 'warning' });
 
           }
-          axios.post('http://localhost:3000/users/paypalonetimepayment', object).then((result) => {
-            console.log('onetimepaypalresult', result)
-          }).catch((error) => {
-            console.log(error)
-          })
           // Show a success message to the buyer
           // alert('Transaction completed by ' + details.payer.name.given_name + '!');
 
