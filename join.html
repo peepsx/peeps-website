@@ -482,24 +482,7 @@
     <script>
       // Render the PayPal button into #paypal-button-container
       paypal.Buttons({
-          // createOrder: function (data, actions) {
-          //     console.log('=========createorder====', data, actions)
-          //     return actions.order.create({
-          //         purchase_units: [{
-          //             amount: {
-          //                 value: '5.00'
-          //             }
-          //         }]
-          //     });
-          // },
-
-          // onApprove: function (data, actions) {
-          //     return actions.order.capture().then(function (details) {
-          //         console.log('=======daetails', details, data, actions)
-          //         // Show a success message to the buyer
-          //         alert('Transaction completed by ' + details.payer.name.given_name + '!');
-          //     });
-          // },
+        
 
           //button style
           style: {
@@ -532,7 +515,7 @@
                   "facilitatorAccessToken": data.facilitatorAccessToken
               }
 
-              axios.post('http://localhost:3000/users/paypalpayment', object).then((result) => {
+              axios.post('https://payments.peepsx.com/users/paypalpayment', object).then((result) => {
                   localStorage.setItem("paypalsubId", data.subscriptionID)
                   localStorage.setItem("paypalstatus", "active")
                   localStorage.setItem('paymentType', "paypal")
@@ -564,7 +547,7 @@
 <!-- ============modal ends=========== -->
 
 <script>
-  var stripe = Stripe('pk_test_51H0hOeJ5nSY4c5DA2cfV1Tv6LG1GbKx2wLunxpRedM2MngFTgty1g1tEJQXhwSe28lgDsHcfl0Xy6OiVGvr1sSYs00Ovbdmo9v');
+  var stripe = Stripe('pk_live_51H0hOeJ5nSY4c5DAvFEuc6pmikZ6QUcUTTbbe9duhfYsUCadDTukQRP077ZzOS7GSmJVQWZFskgX4tAQVgJmnGCL00Iw2Cy1Tz');
   var elements = stripe.elements({
       fonts: [
           {
@@ -640,7 +623,7 @@
           "name": name,
           "token": token.id
       }
-      axios.post('http://localhost:3000/users/payment', object).then((result) => {
+      axios.post('https://payments.peepsx.com/users/payment', object).then((result) => {
           localStorage.setItem("stripedata", result.data.data.id)
           localStorage.setItem("stripestatus", result.data.data.status)
           localStorage.setItem('paymentType', "Stripe")
@@ -732,7 +715,7 @@
                   "subscriptionId": subsid,
                   "subscriptionStatus": subsstatus
               }
-              axios.post('http://localhost:3000/users/saveuser', objdata).then((response) => {
+              axios.post('https://payments.peepsx.com/users/saveuser', objdata).then((response) => {
                   if (response) {
                       console.log(response.data)
                       swal({ title: `${response.data.message}`, icon: "warning" });
@@ -764,7 +747,7 @@
                   "subscriptionId": subsid,
                   "subscriptionStatus": subsstatus
               }
-              axios.post('http://localhost:3000/users/saveuser', objdata).then((response) => {
+              axios.post('https://payments.peepsx.com/users/saveuser', objdata).then((response) => {
                   if (response) {
                       console.log(response.data)
                       swal({ title: "You are peeps member now.", icon: "success" });
