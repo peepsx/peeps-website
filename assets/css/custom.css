@@ -381,3 +381,15 @@ a.text-gray:hover {
   background-color: #5cb85c;
   color: white;
 }
+
+/* New changes */
+.join-page-modal .modal-header {
+  padding: 25px 0;
+}
+.join-page-modal .modal-content {
+  width: 60%;
+}
+.join-page-modal .modal-body label > span {
+  line-height: 42px;
+  width: 50px;
+}
