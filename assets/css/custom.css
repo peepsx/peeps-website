@@ -118,8 +118,8 @@ a.text-gray:hover {
     color: rgb(243, 236, 222);
 }
 .btn-black {
-    background-color: #152a49;
-    color: rgb(83, 86, 86);
+  background-color: rgb(0,0,0);
+  color: rgb(243,236,222) !important;
 }
 .btn-black:hover {
     color: rgb(83, 86, 86);
