@@ -13,7 +13,7 @@
   width: 98px;
 } */
 .increase-width {
-  width: 112%;
+  width: 116%;
 }
 .ppl-bar {
   text-align: center;
@@ -63,6 +63,7 @@ a.text-gray:hover {
 }
 
 /* blocks */
+
 .logo-rounded {
   height: 125px;
   border-radius: 50%;
