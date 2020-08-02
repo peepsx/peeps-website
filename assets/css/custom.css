@@ -404,3 +404,21 @@ a.text-gray:hover {
   line-height: 42px;
   width: 50px;
 }
+
+/* ----------progress loader--------- */
+#myProgress {
+  width: 100%;
+  background-color: #ced4da;
+  border-radius: 200rem;
+
+}
+
+#myBar {
+  border-radius: 200rem;
+  width: 0%;
+  height: 30px;
+  background-color: rgb(0,154,254);
+  text-align: center;
+  line-height: 30px;
+  color: rgb(255, 255, 255)
+}
