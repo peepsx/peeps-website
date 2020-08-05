@@ -39,6 +39,13 @@
 .center-text{
     text-align: center;
 }
+.team-image{
+  height: 240px;
+}
+.join-logo {
+  text-align: center;
+  margin: 20px 0;
+}
 
 
 /* Footer */
@@ -181,7 +188,9 @@ a.text-gray:hover {
   /* -----------------------new stripe payment style---------- */
   
   
-  
+  .payment-box {
+    text-align: center;
+  }
   label {
     position: relative;
     color: #6A7C94;

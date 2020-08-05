@@ -1,442 +1,160 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>Join The Patriots Club | Peeps - decentralize everything.</title>
-    <meta name="title" content="Join The Patriots Club | Peeps - decentralize everything.">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Signup to join our Patriots Club and help support our movement to bring freedom back to the Internet.">
-    <meta name="keywords" content="dweb search engine, search dweb, search dapps, search dsites">
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="assets/img/logo/peepfab.png">
-    
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:400,400i,600,600i,700,700i%7cPermanent+Marker" rel="stylesheet">
-   
-    <link href="assets/css/theme.css" rel="stylesheet" type="text/css" media="all">
-    <link href="assets/css/custom.css" rel="stylesheet">
-     <!-- stripe payment js -->
-     <script src="https://js.stripe.com/v3/"></script>
-     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
+    <head>
+        <meta charset="utf-8">
+        <title>Join the Club | Peeps - decentralize everything.</title>
+        <meta name="title" content="Join the Club | Peeps - decentralize everything.">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="none">
+        <meta name="keywords" content="none">
+        <meta name="author" content="Peeps">
+        <!-- Favicon -->
+        <link rel="shortcut icon" href="assets/img/logo/peepfab.png">
+        
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Nunito:400,400i,600,600i,700,700i%7cPermanent+Marker" rel="stylesheet">
+       
+        <link href="assets/css/theme.css" rel="stylesheet" type="text/css" media="all">
+        <link href="assets/css/custom.css" rel="stylesheet">
+         <!-- stripe payment js -->
+         <script src="https://js.stripe.com/v3/"></script>
+         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     
-  </head>
+        
+      </head>
   <body onload="showModal()">
-
     <div id="loading"></div>
 
-<!--------------------------------- Header Block Start --------------------------->
-<nav class="navbar navbar-expand-lg navbar-light bg-white" style="padding:5px 0;">
-  <div class="container">
-    <a class="navbar-brand" href="index.html">
-      <img alt="Insight" src="assets/img/logo/peepsLogo.png">
-    </a>
-    <div class="d-flex order-lg-3 ml-lg-5">
-      <a href="https://signup.peepsid.com" class="btn btn-primary">Create PeepsID</a>
-      <button class="navbar-toggler ml-2" type="button" data-toggle="collapse" data-target=".navMenu" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-    </div>
-    <div class="collapse navbar-collapse justify-content-between navMenu order-lg-2">
-      <div class="dropdown">
-        <button class="btn dropdown-toggle btn-light btn-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <img src="assets/img/flag-us.svg" alt="United States" class="btn-image">
-          <span>United States</span>
-        </button>
-        <!-- <div class="dropdown-menu">
-          <a class="dropdown-item" href="#">Asia</a>
-          <a class="dropdown-item" href="#">Australia</a>
-          <a class="dropdown-item" href="#">Europe</a>
-          <a class="dropdown-item" href="#">India</a>
-          <a class="dropdown-item" href="#">United States</a>
-        </div> -->
+    <section class="row no-gutters p-0 height-100 align-items-initial">
+      <div class="col-lg d-lg-flex order-lg-2 height-30">
+        <img src="assets/img/American Flag Waving.jpg" alt="Image" class="bg-image">
       </div>
-      <div class="d-lg-flex align-items-center">
-        <div class="d-flex align-items-center justify-content-between my-1 my-lg-0">
-          <ul class="navbar-nav d-flex flex-row">
-            <li class="nav-item">
-              <a href="https://docs.arisen.network" class="nav-link pr-2">Docs</a>
-            </li>
-            <li class="nav-item rix-price-box">
-              <a href="https://wallet.bitshares.org/#/asset/RSN" target="_blank" class="nav-link pr-2">RIX Price: <span id="rix-price" class="rsn-price badge badge-success"></span>
-</a>
-            </li>
-          </ul>
-        </div>
-        <form onsubmit="myFunction()">
-          <div class="input-group input-group-round increase-width">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="input-group-search-2">
-                <i class="material-icons">search</i>
-              </span>
+      <div class="col-lg-6 p-0 d-flex bg-white align-items-lg-center">
+        <div class="row no-gutters flex-fill justify-content-center">
+          <div class="col-11 col-md-8 col-lg-10 col-xl-9 py-4">
+            <div class="join-logo">
+                <a class="navbar-brand" href="index.html">
+                    <img alt="Insight" src="assets/img/logo/peepsLogo.png">
+                </a>
             </div>
-            <input type="search" id="searchid" class="form-control" placeholder="Search PeepsIDs and more..." aria-label="Search">
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</nav>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark py-0 sticky-top">
-  <div class="container">
-    <div class="collapse navbar-collapse navMenu">
-
-      <ul class="navbar-nav nav-tabs border-0">
-
-        <li class="nav-item">
-          <a class="nav-link h5" href="index.html">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link h5" href="peeros.html">PeerOS</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link h5" href="peepsid.html">PeepsID</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link h5" href="dbrowser.html">dBrowser</a>
-        </li>
-
-        <li class="dropdown">
-          <a class="nav-link h5 dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="pages-dropdown">dApps</a>
-          <div class="dropdown-menu dropdown-menu-wide p-0 o-hidden dropdown-menu-right" aria-labelledby="pages-dropdown">
-            <div class="list-group list-group-flush">
-              <a href="dsocial.html " class="list-group-item list-group-item-action d-flex justify-content-between align-items-center py-3">
-                <div class="d-flex align-items-center">
-                  <div class="icon-rounded mr-3">
-                    <img src="assets/img/logo/dsocial.png" alt="dsocial">
-                  </div>
-                  <div>
-                    <span class="h6 d-block mb-0">dSocial</span>
-                  </div>
+            <h1 class="h2 text-center">Join The Patriots Club</h1>
+            <!-- form start-->
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                            <input name="name" type="text"  class="form-control" id="fname" placeholder="First Name*">
+                    </div>
                 </div>
-                <i class="material-icons">keyboard_arrow_right</i>
-              </a>
-              <a href="dwallet.html " class="list-group-item list-group-item-action d-flex justify-content-between align-items-center py-3">
-                <div class="d-flex align-items-center">
-                  <div class="icon-rounded mr-3">
-                    <img src="assets/img/logo/dwallet.png" alt="dwallet">
-                  </div>
-                  <div>
-                    <span class="h6 d-block mb-0">dWallet</span>
-                  </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                            <input name="name" type="text" class="form-control" id="lname" placeholder="Last Name*">
+                    </div>
                 </div>
-                <i class="material-icons">keyboard_arrow_right</i>
-              </a>
-              <a href="dsearch.html " class="list-group-item list-group-item-action d-flex justify-content-between align-items-center py-3">
-                <div class="d-flex align-items-center">
-                  <div class="icon-rounded mr-3">
-                    <img src="assets/img/logo/dseek.png" alt="dsearch">
-                  </div>
-                  <div>
-                    <span class="h6 d-block mb-0">dSearch</span>
-                  </div>
-                </div>
-                <i class="material-icons">keyboard_arrow_right</i>
-              </a>
-              <a href="dnames.html " class="list-group-item list-group-item-action d-flex justify-content-between align-items-center py-3">
-                <div class="d-flex align-items-center">
-                  <div class="icon-rounded mr-3">
-                    <img src="assets/img/logo/dnames.png" alt="dname">
-                  </div>
-                  <div>
-                    <span class="h6 d-block mb-0">dNames</span>
-                  </div>
-                </div>
-                <i class="material-icons">keyboard_arrow_right</i>
-              </a>
             </div>
-            <!-- <div class="p-3 d-flex border-top">
-              <img src="assets/img/avatar-female-1.jpg" alt="Avatar" class="avatar mr-3">
-              <p class="mb-0">
-                &#x201C;Insight&apos;s diverse array of pages make building complete business websites quicker than ever.&#x201D;
-              </p>
-            </div> -->
-          </div>
-        </li>
-
-
-        <li class="dropdown">
-          <a class="nav-link h5 dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="components-dropdown">Developers</a>
-          <div class="dropdown-menu dropdown-menu-wide p-0 o-hidden dropdown-menu-right" aria-labelledby="components-dropdown">
-            <div class="list-group list-group-flush">
-              <a href="https://dwebx.org " class="list-group-item list-group-item-action d-flex justify-content-between align-items-center py-3">
-                <div class="d-flex align-items-center">
-                  <div class="icon-rounded mr-3">
-                    <img src="assets/img/logo/dweb-logo.png" alt="dweb">
-                  </div>
-                  <div>
-                    <span class="h6 d-block mb-0">dWeb</span>
-                  </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                            <input name="name" type="text" class="form-control" id="addressone" placeholder="Address1*">
+                    </div>
                 </div>
-                <i class="material-icons">keyboard_arrow_right</i>
-              </a>
-              <a href="https://arisen.network " class="list-group-item list-group-item-action d-flex justify-content-between align-items-center py-3">
-                <div class="d-flex align-items-center">
-                  <div class="icon-rounded mr-3">
-                    <img src="assets/img/logo/arisen.png" alt="arisen">
-                  </div>
-                  <div>
-                    <span class="h6 d-block mb-0">Arisen Blockchain </span>
-                  </div>
+                <div class="col-sm-6">
+                     <div class="form-group">
+                            <input name="name" type="text" class="form-control" id="addresstwo"  placeholder="Address2">
+                    </div>
                 </div>
-                <i class="material-icons">keyboard_arrow_right</i>
-              </a>
-              <a href="https://docs.arisen.network " class="list-group-item list-group-item-action d-flex justify-content-between align-items-center py-3">
-                <div class="d-flex align-items-center">
-                  <div class="icon-rounded mr-3" style="border: 1px solid #000;">
-                    <span>DD</span>
-                  </div>
-                  <div>
-                    <span class="h6 d-block mb-0">Developer Docs </span>
-                  </div>
-                </div>
-                <i class="material-icons">keyboard_arrow_right</i>
-              </a>
-              <a href="https://explorer.arisen.network " class="list-group-item list-group-item-action d-flex justify-content-between align-items-center py-3">
-                <div class="d-flex align-items-center">
-                  <div class="icon-rounded mr-3" style="border: 1px solid #000;">
-                    <span>EN</span>
-                  </div>
-                  <div>
-                    <span class="h6 d-block mb-0">Explore Network</span>
-                  </div>
-                </div>
-                <i class="material-icons">keyboard_arrow_right</i>
-              </a>
-              
             </div>
-            <!-- <div class="px-3 py-2 border-top">
-              <ul class="list-unstyled m-0 d-flex justify-content-between">
-                <li class="my-1"><a href="http://insight.mediumra.re/documentation/index.html" class="d-flex align-items-center"><i class="material-icons mr-1">book</i> View Documentation</a></li>
-                <li class="my-1"><a href="http://insight.mediumra.re/documentation/changelog.html" class="d-flex align-items-center">View Changelog <span class="ml-1 badge badge-success">1.0.1</span></a></li>
-              </ul>
-            </div> -->
-          </div>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link h5" href="fund.html">Support Us</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-    
-   
-
-<!--------------------------------- Header Block End --------------------------->
-
-<!------------------------- CUSTOM BLOCK ------------------------>
-<section class="height-100 bg-white" id="search-the-dweb">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-xl-8 col-lg-8 col-md-8 center-text">
-            <div class="">
-                <h1 class="display-4 font-alt-1">Join The Patriots Club.</h1>
-                <p class="description" style="font-size: 12px;">Fill out the form below and all required fields to become a member.</p>
-              
-                      <div class="row">
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                    <input name="name" type="text"  class="form-control" id="fname" placeholder="First Name*">
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                    <input name="name" type="text" class="form-control" id="lname" placeholder="Last Name*">
-                            </div>
-                        </div>
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="form-group">
+                            <input name="name" type="text" class="form-control" id="city"  placeholder="City*">
                     </div>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                    <input name="name" type="text" class="form-control" id="addressone" placeholder="Address1*">
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                             <div class="form-group">
-                                    <input name="name" type="text" class="form-control" id="addresstwo"  placeholder="Address2">
-                            </div>
-                        </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                            <input name="name" type="text" class="form-control" id="state"  placeholder="State*">
                     </div>
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <div class="form-group">
-                                    <input name="name" type="text" class="form-control" id="city"  placeholder="City*">
-                            </div>
+                </div>
+                <div class="col-sm-6">
+                        <div class="form-group">
+                            <input name="name" type="number" class="form-control" id="zipcode"  placeholder="Zip Code*">
                         </div>
-                        <div class="col-sm-3">
-                            <div class="form-group">
-                                    <input name="name" type="text" class="form-control" id="state"  placeholder="State*">
-                            </div>
+                </div>
+                <!-- <div class="col-sm-3">
+                        <div class="form-group">
+                            <input name="name" type="text" class="form-control" id="country"  placeholder="Country*">
                         </div>
-                        <div class="col-sm-6">
-                                <div class="form-group">
-                                    <input name="name" type="number" class="form-control" id="zipcode"  placeholder="Zip Code*">
-                                </div>
-                        </div>
-                        <!-- <div class="col-sm-3">
-                                <div class="form-group">
-                                    <input name="name" type="text" class="form-control" id="country"  placeholder="Country*">
-                                </div>
-                        </div> -->
+                </div> -->
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                            <input name="phone" type="number" class="form-control" id="phoneno"  placeholder="Phone*">
                     </div>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                    <input name="phone" type="number" class="form-control" id="phoneno"  placeholder="Phone*">
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                    <input name="email" type="email" class="form-control" id="email"  placeholder="Email*">
-                            </div>
-                        </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                            <input name="email" type="email" class="form-control" id="email"  placeholder="Email*">
                     </div>
-                    <p>Payment Options</p>
-                         <div class="payment-box">
-                            <div class="flex-container payment-optn">
-                                  <div id="paypal-button-container"></div>
+                </div>
+            </div>
+            <p style="text-align: center;">Payment Options</p>
+            <div class="payment-box">
+                <div class="flex-container payment-optn">
+                      <div id="paypal-button-container"></div>
 
-                                  <button type="button" class="btn btn-primary btn-blue" data-toggle="modal"
-                                    data-target="#myModal">Pay With Card</button>
-  
-                          </div>
-                        </div>
-                        <div class="become-member" style="margin: 20px 0;">
-                            <button class="btn btn-lg btn-primary btn-block mb-1" onclick="peepsmember()">Become a Peeps Member</button>
-                        </div>
+                      <button type="button" class="btn btn-primary btn-blue" data-toggle="modal"
+                        data-target="#myModal">Pay With Card</button>
 
-            
-                
               </div>
-        </div>
-      </div>
-
- <!-- Modal stripe payment-->
- <div class="modal join-page-modal" id="myModal" role="dialog">
-  <div class="modal-dialog">
-
-      <!-- Modal content-->
-      <div class="modal-content">
-          <div class="modal-header">
-              <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
-              <h4 class="modal-title">Subscribe to Stripe Payment</h4>
-          </div>
-          <div class="modal-body">
-              <form class="stripeform">
-                  <label>
-                      <span>Name</span>
-                      <input name="cardholder-name" class="field" placeholder="Jane Doe" />
-                  </label>
-                  <label>
-                      <span>Card</span>
-                      <div id="card-element" class="field"></div>
-                  </label>
-                  <div class="pay-btn">
-                    <button type="submit" class="btn btn-sm btn-blue">Pay$5</button>
-                    <button type="button" class="btn btn-sm btn-blue" data-dismiss="modal">Close</button>
-                    </div>
-                  <div class="outcome">
-                      <div class="error"></div>
-                  </div>
-                  
-              </form>
-              
-          </div>
-          <!-- <div class="modal-footer"> -->
-              
-          </div>
-      </div>
-
-  </div>
-  <!-- ------------------------------modal stripe ends---------- -->
-</div>
-
-
-    </div>
-  </section>
-
-<!------------------------- CONTENT BLOCK 1 TEMPLATE End------------------------>
-
-    <!--------------------------- Footer Block Start-------------------->
-    <footer class="spacer-y-3 bg-white">
-      <div class="container">
-        <div class="row">
-          <div class="col-6 col-md-5 mb-3 mb-md-0">
-            <img src="assets/img/logo/peepsLogo.png" alt="peeps-logo" class="footer-logo">
-            <p class="trademark">decentralize everything. &trade;</p>
-            <hr/>
-            <p>"They can take my personal belongings, my reputation, and even my kids, but they'll never take my vision."<br/><b>- Jared Rice Sr.</b><br/>CEO, Peeps</p>
-            <hr/>
-            <p class="powered-by">
-              Powered by <a href="https://peepsx.com" target="_blank"><img src="assets/img/logo/arisen.png" alt="peeps-logo"></a> and Made in <img src="assets/img/flag-us.svg" alt="United States" class="btn-image">
-            </p>
-            <p>&#xA9; 2020 Peeps. All rights reserved. The Peeps logo is copyright of Peeps and cannot be used without the written consent of Peeps.</p>
-
-            <ul class="list-social-links">
-              <li class="text-gray"><a href="https://www.facebook.com/peepsology"><i class="socicon-facebook"></i></a></li>
-              <li class="text-gray"><a href="https://twitter.com/peepsology"><i class="socicon-twitter"></i></a></li>
-              <li class="text-gray"><a href="https://www.youtube.com/channel/UCoknUFNMUF9ciA_WGmm8pxQ"><i class="socicon-youtube"></i></a></li>
-              <li class="text-gray"><a href="https://medium.com/@peepsology"><i class="socicon-medium"></i></a></li>
-              <li class="text-gray"><a href="https://t.me/peepsology"><i class="socicon-telegram"></i></a></li>
-              <!-- <li class="text-gray"><a href="#"><i class="socicon-linkedin"></i></a></li>
-              <li class="text-gray"><a href="#"><i class="socicon-instagram"></i></a></li> -->
-            </ul>
+            </div>
+            <div class="become-member" style="margin: 20px 0;">
+                <button class="btn btn-lg btn-primary btn-block mb-1" onclick="peepsmember()">Become a Peeps Member</button>
+            </div>
+            <!-- form end-->
             
           </div>
-          <div class="col-6 col-md-2 mb-3 mb-md-0">
-            <ul class="list-unstyled">
-              <li class="py-0 py-md-1"><a href="dwallet.html" class="text-gray">dWallet</a></li>
-              <li class="py-0 py-md-1"><a href="dsocial.html" class="text-gray">dSocial</a></li>
-              <li class="py-0 py-md-1"><a href="dnames.html" class="text-gray">dNames</a></li>
-              <li class="py-0 py-md-1"><a href="dsearch.html" class="text-gray">dSearch</a></li>
-            </ul>
-            <hr/>
-            <ul class="list-unstyled">
-              <li class="py-0 py-md-1"><a href="peepsid.html" class="text-gray">PeepsID</a></li>
-              <li class="py-0 py-md-1"><a href="peeros.html" class="text-gray">PeerOS</a></li>
-              <li class="py-0 py-md-1"><a href="dbrowser.html" class="text-gray">ddBrowser</a></li>
-            </ul>
-
-          </div>
-          <div class="col-12 col-md-2 mb-3 mb-md-0">
-            <ul class="list-unstyled">
-              <li class="py-0 py-md-1"><a href="https://dwebx.org" class="text-gray">dWeb</a></li>
-              <li class="py-0 py-md-1"><a href="https://github.com/distributedweb/dwebfs-daemon" class="text-gray">dWebFS Daemon </a></li>
-              <li class="py-0 py-md-1"><a href="https://github.com/distributedweb/dweb-cli" class="text-gray">dWebCLI</a></li>
-              <li class="py-0 py-md-1"><a href="https://github.com/distributedweb/dweb-dns-discovery" class="text-gray">dDNS Discovery </a></li>
-            </ul>
-            <hr/>
-            <ul class="list-unstyled">
-              <li class="py-0 py-md-1"><a href="https://dwebuniversity.com" class="text-gray">dWeb University </a></li>
-            </ul>
-          </div>
-          <div class="col-12 col-md-3">
-            <ul class="list-unstyled">
-              <li class="py-0 py-md-1"><a href="https://arisen.network" class="text-gray">Arisen Blockchain </a></li>
-              <li class="py-0 py-md-1"><a href="https://explorer.arisen.network" class="text-gray">Arisen Blockchain Explorer </a></li>
-              <li class="py-0 py-md-1"><a href="https://docs.arisen.network" class="text-gray">Arisen Documentation </a></li>
-              <li class="py-0 py-md-1"><a href="https://github.com/arisenio/arisen-java-sdk" class="text-gray">Arisen Java SDK </a></li>
-              <li class="py-0 py-md-1"><a href="https://github.com/arisenio/arisen-swift-sdk" class="text-gray">Arisen Swift SDK </a></li>
-              <li class="py-0 py-md-1"><a href="https://github.com/arisenio/arisenjs" class="text-gray">ArisenJS</a></li>
-              <li class="py-0 py-md-1"><a href="https://github.com/arisenio/arisen" class="text-gray">Arisen Core Code </a></li>
-              <li class="py-0 py-md-1"><a href="https://tools.arisen.network" class="text-gray">Arisen Tools </a></li>
-            </ul>
-            <hr/>
-            <ul class="list-unstyled">
-              <li class="py-0 py-md-1"><a href="https://npm.peepsx.com" class="text-gray">Peeps NPM </a></li>
-              <li class="py-0 py-md-1"><a href="https://github.peepsx.com" class="text-gray">Peeps Git Repository </a></li>
-            </ul>
-          </div>
         </div>
-        <!-- <div class="row mt-3 mt-md-4">
-          <div class="col">
-            <span class="text-small text-gray opacity-50">&#xA9; 2018 Medium Rare ABN: 88 88888 88888 and Australian Credit License No 88888888</span>
-          </div>
-        </div> -->
       </div>
-    </footer>
-    <!--------------------------- Footer Block End-------------------->
+       <!-- Modal stripe payment-->
+ <div class="modal join-page-modal" id="myModal" role="dialog">
+    <div class="modal-dialog">
+  
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+                <h4 class="modal-title">Subscribe to Stripe Payment</h4>
+            </div>
+            <div class="modal-body">
+                <form class="stripeform">
+                    <label>
+                        <span>Name</span>
+                        <input name="cardholder-name" class="field" placeholder="Jane Doe" />
+                    </label>
+                    <label>
+                        <span>Card</span>
+                        <div id="card-element" class="field"></div>
+                    </label>
+                    <div class="pay-btn">
+                      <button type="submit" class="btn btn-sm btn-blue">Pay$5</button>
+                      <button type="button" class="btn btn-sm btn-blue" data-dismiss="modal">Close</button>
+                      </div>
+                    <div class="outcome">
+                        <div class="error"></div>
+                    </div>
+                    
+                </form>
+                
+            </div>
+            <!-- <div class="modal-footer"> -->
+                
+            </div>
+        </div>
+  
+    </div>
+    <!-- ------------------------------modal stripe ends---------- -->
+    </section>
 
     <script type="text/javascript" src="assets/js/jquery.min.js"></script>
     <script type="text/javascript" src="assets/js/popper.min.js"></script>
@@ -461,313 +179,310 @@
       }
   </script>
 
-    <script>
-      // Rix price
-      axios.get('https://nv6khovry9.execute-api.us-east-1.amazonaws.com/dev/rsn_price_from_bts')
-            .then(function (response) {
-            document.getElementById('rix-price').innerHTML = ` $ ${parseFloat(response.data.data.USD.price).toFixed(4)}`;
-            })
-            .catch(function (error) {
-                console.log(error)
-            });
+<script>
+    // Rix price
+    axios.get('https://nv6khovry9.execute-api.us-east-1.amazonaws.com/dev/rsn_price_from_bts')
+          .then(function (response) {
+          document.getElementById('rix-price').innerHTML = ` $ ${parseFloat(response.data.data.USD.price).toFixed(4)}`;
+          })
+          .catch(function (error) {
+              console.log(error)
+          });
 
-    </script>
-
-    <!-- -------paypal payment---------- -->
-    <script
-    src="https://www.paypal.com/sdk/js?client-id=Aes7-mZ9lsMi3h-m6lZ-eIQFBaUoF_hpHW1fF8bEZ5a59vZvzeTg75ZZc78g5h5igwkSABHfvlDQk8VQ&vault=true"
-    data-sdk-integration-source="button-factory">
-    </script>
-
-    <script>
-      // Render the PayPal button into #paypal-button-container
-      paypal.Buttons({
-        
-
-          //button style
-          style: {
-              layout: 'horizontal',
-              color: 'blue',
-              shape: 'pill',
-              height: 40,
-              label: 'subscribe',
-              tagline: false
-          },
-
-          createSubscription: function (data, actions) {
-
-              return actions.subscription.create({
-                  'plan_id': 'P-7MG6534019154735TL4FSIZI'
-              });
-          },
-          onCancel: function (data) {
-              swal({title:"User has cancelled the payment.",icon:'warning'});
-              document.getElementById("loading").style.display = "none";
-
-          },
-          onApprove: function (data, actions) {
-              swal("Your payment is Successful.", `Your SubscriptionId is: ${data.subscriptionID}`, "success");
-              
-              let object = {
-                  "orderID": data.orderID,
-                  "billingToken": data.billingToken,
-                  "subscriptionID": data.subscriptionID,
-                  "facilitatorAccessToken": data.facilitatorAccessToken
-              }
-
-              axios.post('https://payments.peepsx.com/users/paypalpayment', object).then((result) => {
-                  localStorage.setItem("paypalsubId", data.subscriptionID)
-                  localStorage.setItem("paypalstatus", "active")
-                  localStorage.setItem('paymentType', "paypal")
-              }).catch((error) => {
-                  console.log(error)
-              })
-
-          }
-      }).render('#paypal-button-container');
   </script>
 
-  <!-- =============modal start========== -->
+  <!-- -------paypal payment---------- -->
+  <script
+  src="https://www.paypal.com/sdk/js?client-id=Aes7-mZ9lsMi3h-m6lZ-eIQFBaUoF_hpHW1fF8bEZ5a59vZvzeTg75ZZc78g5h5igwkSABHfvlDQk8VQ&vault=true"
+  data-sdk-integration-source="button-factory">
+  </script>
+
   <script>
-    // Get the modal
-    var modal = document.getElementById("myModal");
-    // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("close")[0];
-    // When the user clicks on <span> (x), close the modal
-    span.onclick = function () {
-        modal.style.display = "none";
-    }
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function (event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
+    // Render the PayPal button into #paypal-button-container
+    paypal.Buttons({
+      
+
+        //button style
+        style: {
+            layout: 'horizontal',
+            color: 'blue',
+            shape: 'pill',
+            height: 40,
+            label: 'subscribe',
+            tagline: false
+        },
+
+        createSubscription: function (data, actions) {
+
+            return actions.subscription.create({
+                'plan_id': 'P-7MG6534019154735TL4FSIZI'
+            });
+        },
+        onCancel: function (data) {
+            swal({title:"User has cancelled the payment.",icon:'warning'});
+            document.getElementById("loading").style.display = "none";
+
+        },
+        onApprove: function (data, actions) {
+            swal("Your payment is Successful.", `Your SubscriptionId is: ${data.subscriptionID}`, "success");
+            
+            let object = {
+                "orderID": data.orderID,
+                "billingToken": data.billingToken,
+                "subscriptionID": data.subscriptionID,
+                "facilitatorAccessToken": data.facilitatorAccessToken
+            }
+
+            axios.post('https://payments.peepsx.com/users/paypalpayment', object).then((result) => {
+                localStorage.setItem("paypalsubId", data.subscriptionID)
+                localStorage.setItem("paypalstatus", "active")
+                localStorage.setItem('paymentType', "paypal")
+            }).catch((error) => {
+                console.log(error)
+            })
+
         }
-    }
+    }).render('#paypal-button-container');
+</script>
+
+<!-- =============modal start========== -->
+<script>
+  // Get the modal
+  var modal = document.getElementById("myModal");
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function () {
+      modal.style.display = "none";
+  }
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function (event) {
+      if (event.target == modal) {
+          modal.style.display = "none";
+      }
+  }
 </script>
 <!-- ============modal ends=========== -->
 
 <script>
-  var stripe = Stripe('pk_live_51H0hOeJ5nSY4c5DAvFEuc6pmikZ6QUcUTTbbe9duhfYsUCadDTukQRP077ZzOS7GSmJVQWZFskgX4tAQVgJmnGCL00Iw2Cy1Tz');
-  var elements = stripe.elements({
-      fonts: [
-          {
-              family: 'Open Sans',
-              weight: 400,
-              src: 'local("Open Sans"), local("OpenSans"), url(https://fonts.gstatic.com/s/opensans/v13/cJZKeOuBrn4kERxqtaUH3ZBw1xU1rKptJj_0jans920.woff2) format("woff2")',
-              unicodeRange: 'U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215',
-          },
-      ]
-  });
+var stripe = Stripe('pk_live_51H0hOeJ5nSY4c5DAvFEuc6pmikZ6QUcUTTbbe9duhfYsUCadDTukQRP077ZzOS7GSmJVQWZFskgX4tAQVgJmnGCL00Iw2Cy1Tz');
+var elements = stripe.elements({
+    fonts: [
+        {
+            family: 'Open Sans',
+            weight: 400,
+            src: 'local("Open Sans"), local("OpenSans"), url(https://fonts.gstatic.com/s/opensans/v13/cJZKeOuBrn4kERxqtaUH3ZBw1xU1rKptJj_0jans920.woff2) format("woff2")',
+            unicodeRange: 'U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215',
+        },
+    ]
+});
 
-  var card = elements.create('card', {
-      hidePostalCode: true,
-      style: {
-          base: {
-              iconColor: '#F99A52',
-              color: 'black',
-              lineHeight: '48px',
-              fontWeight: 400,
-              fontFamily: '"Open Sans", "Helvetica Neue", "Helvetica", sans-serif',
-              fontSize: '15px',
-              '::placeholder': {
-                  color: '#CFD7DF',
-              }
-          },
-      }
-  });
-  card.mount('#card-element');
+var card = elements.create('card', {
+    hidePostalCode: true,
+    style: {
+        base: {
+            iconColor: '#F99A52',
+            color: 'black',
+            lineHeight: '48px',
+            fontWeight: 400,
+            fontFamily: '"Open Sans", "Helvetica Neue", "Helvetica", sans-serif',
+            fontSize: '15px',
+            '::placeholder': {
+                color: '#CFD7DF',
+            }
+        },
+    }
+});
+card.mount('#card-element');
 
-  function setOutcome(result, name) {
-      // var successElement = document.querySelector('.success');
-      var errorElement = document.querySelector('.error');
-      // successElement.classList.remove('visible');
-      errorElement.classList.remove('visible');
+function setOutcome(result, name) {
+    // var successElement = document.querySelector('.success');
+    var errorElement = document.querySelector('.error');
+    // successElement.classList.remove('visible');
+    errorElement.classList.remove('visible');
 
-      if (result.token) {
+    if (result.token) {
 
-          this.payment(result.token, name)
+        this.payment(result.token, name)
 
 
-          $('#myModal').modal('hide');
+        $('#myModal').modal('hide');
 
-          document.getElementById("loading").style.display = "block";
+        document.getElementById("loading").style.display = "block";
 
-          // Use the token to create a charge or a customer
-          // https://stripe.com/docs/charges
-          //successElement.querySelector('.token').textContent = result.token.id;
-          //successElement.classList.add('visible');
-      } else if (result.error) {
-          errorElement.textContent = result.error.message;
-          errorElement.classList.add('visible');
-      }
-  }
+        // Use the token to create a charge or a customer
+        // https://stripe.com/docs/charges
+        //successElement.querySelector('.token').textContent = result.token.id;
+        //successElement.classList.add('visible');
+    } else if (result.error) {
+        errorElement.textContent = result.error.message;
+        errorElement.classList.add('visible');
+    }
+}
 
-  card.on('change', function (event) {
-      setOutcome(event);
-  });
+card.on('change', function (event) {
+    setOutcome(event);
+});
 
-  document.querySelector('.stripeform').addEventListener('submit', function (e) {
-      e.preventDefault();
+document.querySelector('.stripeform').addEventListener('submit', function (e) {
+    e.preventDefault();
 
-      var form = document.querySelector('.stripeform');
-      var extraDetails = {
-          name: form.querySelector('input[name=cardholder-name]').value,
-      };
-      stripe.createToken(card, extraDetails).then(result => {
-          setOutcome(result, extraDetails.name)
-      });
-  });
+    var form = document.querySelector('.stripeform');
+    var extraDetails = {
+        name: form.querySelector('input[name=cardholder-name]').value,
+    };
+    stripe.createToken(card, extraDetails).then(result => {
+        setOutcome(result, extraDetails.name)
+    });
+});
 
-  async function payment(token, name) {
-      let object = {
-          "name": name,
-          "token": token.id
-      }
-      axios.post('https://payments.peepsx.com/users/payment', object).then((result) => {
-          localStorage.setItem("stripedata", result.data.data.id)
-          localStorage.setItem("stripestatus", result.data.data.status)
-          localStorage.setItem('paymentType', "Stripe")
-          document.getElementById("loading").style.display = "none";
-          swal("Your payment is Successful.", `Your SubscriptionId is: ${result.data.data.id}`, "success");
-      }).catch((error) => {
-          console.log('error block stripe payment', error)
-      })
-  }
+async function payment(token, name) {
+    let object = {
+        "name": name,
+        "token": token.id
+    }
+    axios.post('https://payments.peepsx.com/users/payment', object).then((result) => {
+        localStorage.setItem("stripedata", result.data.data.id)
+        localStorage.setItem("stripestatus", result.data.data.status)
+        localStorage.setItem('paymentType', "Stripe")
+        document.getElementById("loading").style.display = "none";
+        swal("Your payment is Successful.", `Your SubscriptionId is: ${result.data.data.id}`, "success");
+    }).catch((error) => {
+        console.log('error block stripe payment', error)
+    })
+}
 </script>
 
 
 <script>
-  function peepsmember() {
-      //commont type
-      let paymenttype = localStorage.getItem('paymentType')
-      //let regemail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-      let fname = document.getElementById('fname').value
-      let lname = document.getElementById('lname').value
-      let addressone = document.getElementById('addressone').value
-      let addresstwo = document.getElementById('addresstwo').value
-      let city = document.getElementById('city').value
-      let state = document.getElementById('state').value
-      let zipcode = document.getElementById('zipcode').value
-      let country = document.getElementById('country').value
-      let phoneno = document.getElementById('phoneno').value
-      let email = document.getElementById('email').value
-      if (fname == "" || fname == null) {
-          swal({ title: "Enter first name!", icon: "warning" });
-          return
-      } else if (!isNaN(fname)) {
-          swal({ title: "Enter valid first name!", icon: "warning" });
-          return
-      } else if (lname == "" || lname == null) {
-          swal({ title: "Enter your last name!", icon: "warning" });
-          return
-      } else if (!isNaN(lname)) {
-          swal({ title: "Enter valid last name!", icon: "warning" });
-          return
-      } else if (addressone == "" || addressone == null) {
-          swal({ title: "Enter your first address!", icon: "warning" });
-          return
-      } else if (addresstwo == "" || addresstwo == null) {
-          swal({ title: "Enter your second address!", icon: "warning" });
-          return
-      } else if (city == "" || city == null) {
-          swal({ title: "Enter city name!", icon: "warning" });
-          return
-      } else if (!isNaN(city)) {
-          swal({ title: "Enter valid city name!", icon: "warning" });
-          return
-      } else if (state == "" || state == null) {
-          swal({ title: "Enter your state name!", icon: "warning" });
-          return
-      } else if (!isNaN(state)) {
-          swal({ title: "Enter valid state name!", icon: "warning" });
-          return
-      } else if (zipcode == "" || zipcode == null) {
-          swal({ title: "Enter your zipcoe!", icon: "warning" });
-          return
-      } else if (country == "" || country == null) {
-          swal({ title: "Enter your country name!", icon: "warning" });
-          return
-      } else if (!isNaN(country)) {
-          swal({ title: "Enter valid country name!", icon: "warning" });
-          return
-      } else if (phoneno == "" || phoneno == null) {
-          swal({ title: "Enter your phone number!", icon: "warning" });
-          return
-      } else if (email == "" || email == null) {
-          swal({ title: "Enter your Email!", icon: "warning" });
-          return
-      } else {
-          if (paymenttype == 'Stripe') {
-              let subsid = localStorage.getItem('stripedata')
-              let subsstatus = localStorage.getItem('stripestatus')
-              let objdata = {
-                  "fName": fname,
-                  "lName": lname,
-                  "addressOne": addressone,
-                  "addressTwo": addresstwo,
-                  "city": city,
-                  "state": state,
-                  "zipcode": zipcode,
-                  "country": country,
-                  "phoneNo": phoneno,
-                  "email": email,
-                  "paymenttype": paymenttype,
-                  "subscriptionId": subsid,
-                  "subscriptionStatus": subsstatus
-              }
-              axios.post('https://payments.peepsx.com/users/saveuser', objdata).then((response) => {
-                  if (response) {
-                      console.log(response.data)
-                      swal({ title: `${response.data.message}`, icon: "warning" });
-                      if (response.data.status) {
-                          localStorage.clear()
-                      }
-                  } else {
-                      swal({ title: "Something went wrong,Please try again!", icon: "warning" });
-                  }
-              }).catch((error) => {
-                  console.log(error)
-              })
-          }
-          else if (paymenttype == 'paypal') {
-              let subsid = localStorage.getItem("paypalsubId")
-              let subsstatus = localStorage.getItem("paypalstatus")
-              let objdata = {
-                  "fName": fname,
-                  "lName": lname,
-                  "addressOne": addressone,
-                  "addressTwo": addresstwo,
-                  "city": city,
-                  "state": state,
-                  "zipcode": zipcode,
-                  "country": country,
-                  "phoneNo": phoneno,
-                  "email": email,
-                  "paymenttype": paymenttype,
-                  "subscriptionId": subsid,
-                  "subscriptionStatus": subsstatus
-              }
-              axios.post('https://payments.peepsx.com/users/saveuser', objdata).then((response) => {
-                  if (response) {
-                      console.log(response.data)
-                      swal({ title: "You are peeps member now.", icon: "success" });
-                      localStorage.clear()
-                  } else {
-                      swal({ title: "Something went wrong,Please try again!", icon: "warning" });
-                  }
-              }).catch((error) => {
-                  console.log(error)
-              })
-          }
-          else {
-              swal({ title: "Please complete your payment!", icon: "warning" });
-          }
-      }
-  }
+function peepsmember() {
+    //commont type
+    let paymenttype = localStorage.getItem('paymentType')
+    //let regemail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    let fname = document.getElementById('fname').value
+    let lname = document.getElementById('lname').value
+    let addressone = document.getElementById('addressone').value
+    let addresstwo = document.getElementById('addresstwo').value
+    let city = document.getElementById('city').value
+    let state = document.getElementById('state').value
+    let zipcode = document.getElementById('zipcode').value
+    let country = document.getElementById('country').value
+    let phoneno = document.getElementById('phoneno').value
+    let email = document.getElementById('email').value
+    if (fname == "" || fname == null) {
+        swal({ title: "Enter first name!", icon: "warning" });
+        return
+    } else if (!isNaN(fname)) {
+        swal({ title: "Enter valid first name!", icon: "warning" });
+        return
+    } else if (lname == "" || lname == null) {
+        swal({ title: "Enter your last name!", icon: "warning" });
+        return
+    } else if (!isNaN(lname)) {
+        swal({ title: "Enter valid last name!", icon: "warning" });
+        return
+    } else if (addressone == "" || addressone == null) {
+        swal({ title: "Enter your first address!", icon: "warning" });
+        return
+    } else if (addresstwo == "" || addresstwo == null) {
+        swal({ title: "Enter your second address!", icon: "warning" });
+        return
+    } else if (city == "" || city == null) {
+        swal({ title: "Enter city name!", icon: "warning" });
+        return
+    } else if (!isNaN(city)) {
+        swal({ title: "Enter valid city name!", icon: "warning" });
+        return
+    } else if (state == "" || state == null) {
+        swal({ title: "Enter your state name!", icon: "warning" });
+        return
+    } else if (!isNaN(state)) {
+        swal({ title: "Enter valid state name!", icon: "warning" });
+        return
+    } else if (zipcode == "" || zipcode == null) {
+        swal({ title: "Enter your zipcoe!", icon: "warning" });
+        return
+    } else if (country == "" || country == null) {
+        swal({ title: "Enter your country name!", icon: "warning" });
+        return
+    } else if (!isNaN(country)) {
+        swal({ title: "Enter valid country name!", icon: "warning" });
+        return
+    } else if (phoneno == "" || phoneno == null) {
+        swal({ title: "Enter your phone number!", icon: "warning" });
+        return
+    } else if (email == "" || email == null) {
+        swal({ title: "Enter your Email!", icon: "warning" });
+        return
+    } else {
+        if (paymenttype == 'Stripe') {
+            let subsid = localStorage.getItem('stripedata')
+            let subsstatus = localStorage.getItem('stripestatus')
+            let objdata = {
+                "fName": fname,
+                "lName": lname,
+                "addressOne": addressone,
+                "addressTwo": addresstwo,
+                "city": city,
+                "state": state,
+                "zipcode": zipcode,
+                "country": country,
+                "phoneNo": phoneno,
+                "email": email,
+                "paymenttype": paymenttype,
+                "subscriptionId": subsid,
+                "subscriptionStatus": subsstatus
+            }
+            axios.post('https://payments.peepsx.com/users/saveuser', objdata).then((response) => {
+                if (response) {
+                    console.log(response.data)
+                    swal({ title: `${response.data.message}`, icon: "warning" });
+                    if (response.data.status) {
+                        localStorage.clear()
+                    }
+                } else {
+                    swal({ title: "Something went wrong,Please try again!", icon: "warning" });
+                }
+            }).catch((error) => {
+                console.log(error)
+            })
+        }
+        else if (paymenttype == 'paypal') {
+            let subsid = localStorage.getItem("paypalsubId")
+            let subsstatus = localStorage.getItem("paypalstatus")
+            let objdata = {
+                "fName": fname,
+                "lName": lname,
+                "addressOne": addressone,
+                "addressTwo": addresstwo,
+                "city": city,
+                "state": state,
+                "zipcode": zipcode,
+                "country": country,
+                "phoneNo": phoneno,
+                "email": email,
+                "paymenttype": paymenttype,
+                "subscriptionId": subsid,
+                "subscriptionStatus": subsstatus
+            }
+            axios.post('https://payments.peepsx.com/users/saveuser', objdata).then((response) => {
+                if (response) {
+                    console.log(response.data)
+                    swal({ title: "You are peeps member now.", icon: "success" });
+                    localStorage.clear()
+                } else {
+                    swal({ title: "Something went wrong,Please try again!", icon: "warning" });
+                }
+            }).catch((error) => {
+                console.log(error)
+            })
+        }
+        else {
+            swal({ title: "Please complete your payment!", icon: "warning" });
+        }
+    }
+}
 </script>
-
-
-
 
   </body>
 </html>
