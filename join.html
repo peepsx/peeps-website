@@ -439,7 +439,7 @@ function peepsmember() {
             axios.post('https://payments.peepsx.com/users/saveuser', objdata).then((response) => {
                 if (response) {
                     console.log(response.data)
-                    swal({ title: `${response.data.message}`, icon: "warning" });
+                    // swal({ title: `${response.data.message}`, icon: "warning" });
                     if (response.data.status) {
                         localStorage.clear()
                         window.location.replace('welcome.html')
@@ -472,7 +472,7 @@ function peepsmember() {
             axios.post('https://payments.peepsx.com/users/saveuser', objdata).then((response) => {
                 if (response) {
                     console.log(response.data)
-                    swal({ title: "You are peeps member now.", icon: "success" });
+                    // swal({ title: "You are peeps member now.", icon: "success" });
                     localStorage.clear()
                     window.location.replace('welcome.html')
 
