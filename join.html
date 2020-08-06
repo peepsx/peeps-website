@@ -366,7 +366,7 @@ function peepsmember() {
     let city = document.getElementById('city').value
     let state = document.getElementById('state').value
     let zipcode = document.getElementById('zipcode').value
-    let country = document.getElementById('country').value
+    // let country = document.getElementById('country').value
     let phoneno = document.getElementById('phoneno').value
     let email = document.getElementById('email').value
     if (fname == "" || fname == null) {
@@ -402,13 +402,16 @@ function peepsmember() {
     } else if (zipcode == "" || zipcode == null) {
         swal({ title: "Enter your zipcoe!", icon: "warning" });
         return
-    } else if (country == "" || country == null) {
-        swal({ title: "Enter your country name!", icon: "warning" });
-        return
-    } else if (!isNaN(country)) {
-        swal({ title: "Enter valid country name!", icon: "warning" });
-        return
-    } else if (phoneno == "" || phoneno == null) {
+    } 
+    // else if (country == "" || country == null) {
+    //     swal({ title: "Enter your country name!", icon: "warning" });
+    //     return
+    // }
+    //  else if (!isNaN(country)) {
+    //     swal({ title: "Enter valid country name!", icon: "warning" });
+    //     return
+    // } 
+    else if (phoneno == "" || phoneno == null) {
         swal({ title: "Enter your phone number!", icon: "warning" });
         return
     } else if (email == "" || email == null) {
@@ -426,7 +429,7 @@ function peepsmember() {
                 "city": city,
                 "state": state,
                 "zipcode": zipcode,
-                "country": country,
+                // "country": country,
                 "phoneNo": phoneno,
                 "email": email,
                 "paymenttype": paymenttype,
@@ -439,6 +442,7 @@ function peepsmember() {
                     swal({ title: `${response.data.message}`, icon: "warning" });
                     if (response.data.status) {
                         localStorage.clear()
+                        window.location.replace('welcome.html')
                     }
                 } else {
                     swal({ title: "Something went wrong,Please try again!", icon: "warning" });
@@ -458,7 +462,7 @@ function peepsmember() {
                 "city": city,
                 "state": state,
                 "zipcode": zipcode,
-                "country": country,
+                // "country": country,
                 "phoneNo": phoneno,
                 "email": email,
                 "paymenttype": paymenttype,
@@ -470,6 +474,8 @@ function peepsmember() {
                     console.log(response.data)
                     swal({ title: "You are peeps member now.", icon: "success" });
                     localStorage.clear()
+                    window.location.replace('welcome.html')
+
                 } else {
                     swal({ title: "Something went wrong,Please try again!", icon: "warning" });
                 }
