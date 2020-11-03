@@ -272,7 +272,10 @@
                 </div>
                 <h1 class="display-4 text-white font-alt-1 text-center mt-2">Experience The Open Web.</h1>
                 <p class="description" style="color: #fff;">dBrowser is a web browser for Linux, MacOS, and Windows that allows users to browse and develop upon the decentralized web (dweb://).</p>
-               <div class="text-center"><a href="#" class="btn btn-lg btn-white" id='' target="_blank">Coming Soon</a></div>  <!-- keep id="os_download" for downloading -->
+               <!-- <div class="text-center"><a href="#" class="btn btn-lg btn-white" id='' target="_blank">Coming Soon</a></div>  keep id="os_download" for downloading -->
+               <div class="text-center">
+                <div class="text-center"><a href="https://github.com/dBrowser/dbrowser/releases" class="btn btn-lg btn-white" id='os_download' target="_blank">Download for OS</a></div>
+              </div>
                 <a href="#browse-the-dweb"><i class="material-icons d-block down-arrow arrow bounce">keyboard_arrow_down</i></a>
               </div>
         </div>
@@ -501,17 +504,17 @@
         }  if(navigator.userAgent.match(/mac/i)) {
             document.getElementById('os_download').innerHTML = `Download For MacOS`
         }  if(navigator.userAgent.match(/win/i)) {
-            document.getElementById('os_download').innerHTML = `Download For Windows`
+            document.getElementById('os_download').innerHTML = `Coming soon`
         } 
         }
         
         let txt = document.getElementById('os_download');
             if(txt.innerHTML.indexOf('Linux') !== -1) {
-                txt.href = 'https://github.com/dBrowser/dbrowser/releases/download/1.7.5/dbrowser-1.7.5-x86_64.AppImage'
+                txt.href = 'https://github.com/dBrowser/dbrowser/releases/download/1.0.0/dBrowser-1.0.0.AppImage'
             } else if(txt.innerHTML.indexOf('Mac') !== -1) {
-                txt.href = 'https://github.com/dBrowser/dbrowser/releases/download/1.7.5/dbrowser-1.7.5.dmg'
+                txt.href = 'https://github.com/dBrowser/dbrowser/releases/download/1.0.0/dBrowser-1.0.0.dmg'
             } else  if(txt.innerHTML.indexOf('Win') !== -1) {
-                txt.href = 'https://github.com/dBrowser/dbrowser/releases/download/1.7.5/dbrowser-setup-1.7.5.exe'
+             //   txt.href = 'https://github.com/dBrowser/dbrowser/releases/download/1.7.5/dbrowser-setup-1.7.5.exe'
             }
             else{
                 txt.href = "#"
