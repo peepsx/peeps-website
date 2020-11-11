@@ -494,7 +494,7 @@
       // Os detection
       var isMobile = window.orientation > -1;
         if(isMobile){
-            document.getElementById('os_download').innerHTML = `Download For Mobile`
+            document.getElementById('os_download').innerHTML = `Coming soon For Mobile`
             document.getElementById('os_download').disabled = true
         }
 
@@ -504,7 +504,7 @@
         }  if(navigator.userAgent.match(/mac/i)) {
             document.getElementById('os_download').innerHTML = `Download For MacOS`
         }  if(navigator.userAgent.match(/win/i)) {
-            document.getElementById('os_download').innerHTML = `Coming soon`
+            document.getElementById('os_download').innerHTML = `Download For Windows`
         } 
         }
         
@@ -514,7 +514,7 @@
             } else if(txt.innerHTML.indexOf('Mac') !== -1) {
                 txt.href = 'https://github.com/dBrowser/dbrowser/releases/download/1.0.0/dBrowser-1.0.0.dmg'
             } else  if(txt.innerHTML.indexOf('Win') !== -1) {
-             //   txt.href = 'https://github.com/dBrowser/dbrowser/releases/download/1.7.5/dbrowser-setup-1.7.5.exe'
+                txt.href = 'https://github.com/dBrowser/dbrowser/releases/download/1.0.0/dBrowser.Setup.1.0.0.exe'
             }
             else{
                 txt.href = "#"
