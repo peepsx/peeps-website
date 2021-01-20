@@ -15,7 +15,7 @@ $('a[href^="#"]').on('click', function(event) {
 function myFunction(){
     let value = document.getElementById("searchid").value
     // console.log("mmmmmm",value)
-    window.open(`https://explorer.arisen.network/account/${value}`)
+    window.open(`https://data.arisen.network/accounts/${value}`)
 }
 // donate page close model
 function closemodl(){
