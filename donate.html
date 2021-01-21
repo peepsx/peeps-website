@@ -75,31 +75,57 @@
                   <p>Choose your donation amount below:</p>
                   <!-- <form> -->
                   <div class="row" id="amounts">
-                    <div class="col-sm-4">
+                    <div class="col-sm-2">
                       <div class="form-group">
                         <div class="custom-control custom-radio mb-1">
                           <input type="radio" id="amountRadio1" name="amountRadio" class="custom-control-input"
-                            value="100" checked="checked">
-                          <label class="custom-control-label" for="amountRadio1">$100</label>
+                            value="5" checked="checked">
+                          <label class="custom-control-label" for="amountRadio1">$5</label>
                         </div>
-
                       </div>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-2">
                       <div class="form-group">
-                        <div class="custom-control custom-radio">
+                        <div class="custom-control custom-radio mb-1">
                           <input type="radio" id="amountRadio2" name="amountRadio" class="custom-control-input"
-                            value="500">
-                          <label class="custom-control-label" for="amountRadio2">$500</label>
+                            value="25">
+                          <label class="custom-control-label" for="amountRadio2">$25</label>
                         </div>
                       </div>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-2">
+                      <div class="form-group">
+                        <div class="custom-control custom-radio mb-1">
+                          <input type="radio" id="amountRadio3" name="amountRadio" class="custom-control-input"
+                            value="100">
+                          <label class="custom-control-label" for="amountRadio3">$100</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-2">
                       <div class="form-group">
                         <div class="custom-control custom-radio">
-                          <input type="radio" id="amountRadio3" name="amountRadio" class="custom-control-input"
+                          <input type="radio" id="amountRadio4" name="amountRadio" class="custom-control-input"
+                            value="500">
+                          <label class="custom-control-label" for="amountRadio4">$500</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-2">
+                      <div class="form-group">
+                        <div class="custom-control custom-radio mb-1">
+                          <input type="radio" id="amountRadio5" name="amountRadio" class="custom-control-input"
+                            value="1000">
+                          <label class="custom-control-label" for="amountRadio5">$1000</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-2">
+                      <div class="form-group">
+                        <div class="custom-control custom-radio">
+                          <input type="radio" id="amountRadio6" name="amountRadio" class="custom-control-input"
                             value="2000">
-                          <label class="custom-control-label" for="amountRadio3">$2000</label>
+                          <label class="custom-control-label" for="amountRadio6">$2000</label>
                         </div>
                       </div>
                     </div>
@@ -310,7 +336,7 @@
   </script>
   <script>
     // --------------first next button----------------
-    var amount = 100;
+    var amount = 5;
     function firstNextButton() {
       if (document.getElementById('amountRadio1').checked) {
         amount = document.getElementById('amountRadio1').value;
@@ -318,6 +344,12 @@
         amount = document.getElementById('amountRadio2').value;
       } else if (document.getElementById('amountRadio3').checked) {
         amount = document.getElementById('amountRadio3').value;
+      }else if (document.getElementById('amountRadio4').checked) {
+        amount = document.getElementById('amountRadio4').value;
+      }else if (document.getElementById('amountRadio5').checked) {
+        amount = document.getElementById('amountRadio5').value;
+      }else if (document.getElementById('amountRadio6').checked) {
+        amount = document.getElementById('amountRadio6').value;
       }
 
 
