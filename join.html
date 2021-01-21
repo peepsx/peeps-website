@@ -48,38 +48,7 @@
                 </a>
             </div>
             <h1 class="h2 text-center">Join I AM Freedom.</h1>
-            <!-- subscription type start-->
-            <div class="row" id="subscriber-type">
-                <div class="col-sm-4">
-                  <div class="form-group">
-                    <div class="custom-control custom-radio mb-1">
-                      <input type="radio" id="Leader" name="amountRadio" class="custom-control-input"
-                        value="5" checked="checked">
-                      <label class="custom-control-label" for="Leader">Leader ($5/month)</label>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-4">
-                  <div class="form-group">
-                    <div class="custom-control custom-radio mb-1">
-                      <input type="radio" id="Hero" name="amountRadio" class="custom-control-input"
-                        value="10">
-                      <label class="custom-control-label" for="Hero">Hero ($10/month)</label>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-4">
-                  <div class="form-group">
-                    <div class="custom-control custom-radio mb-1">
-                      <input type="radio" id="Patriot" name="amountRadio" class="custom-control-input"
-                        value="20">
-                      <label class="custom-control-label" for="Patriot">Patriot ($20/month)</label>
-                    </div>
-                  </div>
-                </div>
-                
-              </div>
-              <!-- subscription type end-->
+
 
             <!-- form start-->
             <div class="row">
@@ -140,7 +109,40 @@
                     </div>
                 </div>
             </div>
-            <p style="text-align: center;">Payment Options</p>
+
+                        <!-- subscription type start-->
+                        <div class="row" id="subscriber-type">
+                            <div class="col-sm-4">
+                              <div class="form-group">
+                                <div class="custom-control custom-radio mb-1">
+                                  <input type="radio" id="Leader" name="amountRadio" class="custom-control-input"
+                                    value="5" checked="checked">
+                                  <label class="custom-control-label font14" for="Leader">Leader ($5/month)</label>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-sm-4">
+                              <div class="form-group">
+                                <div class="custom-control custom-radio mb-1">
+                                  <input type="radio" id="Hero" name="amountRadio" class="custom-control-input"
+                                    value="10">
+                                  <label class="custom-control-label font14" for="Hero">Hero ($10/month)</label>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-sm-4">
+                              <div class="form-group">
+                                <div class="custom-control custom-radio mb-1">
+                                  <input type="radio" id="Patriot" name="amountRadio" class="custom-control-input"
+                                    value="20">
+                                  <label class="custom-control-label font14" for="Patriot">Patriot ($20/month)</label>
+                                </div>
+                              </div>
+                            </div>
+                            
+                          </div>
+                          <!-- subscription type end-->
+
             <div class="payment-box">
                 <div class="flex-container payment-optn">
                       <div id="paypal-button-container"></div>
@@ -240,6 +242,12 @@
   </script>
 
   <script>
+
+      var amount = 5;
+      var checkout_ID_USD = 'P-7MG6534019154735TL4FSIZI';
+
+     
+
     // Render the PayPal button into #paypal-button-container
     paypal.Buttons({
       
@@ -256,8 +264,21 @@
 
         createSubscription: function (data, actions) {
 
+
+            if (document.getElementById('Leader').checked) {
+                amount_ = document.getElementById('Leader').value;
+                checkout_ID_USD = 'P-7MG6534019154735TL4FSIZI';
+            } else if (document.getElementById('Hero').checked) {
+                amount_ = document.getElementById('Hero').value;
+                checkout_ID_USD = 'P-9EK16695R6077941TMAEVPQY';
+            } else if (document.getElementById('Patriot').checked) {
+                amount_ = document.getElementById('Patriot').value;
+                checkout_ID_USD = 'P-7JB4375962825160WMAEVQFY';
+            }
+            console.log("sssss",checkout_ID_USD,amount_);
+
             return actions.subscription.create({
-                'plan_id': 'P-7MG6534019154735TL4FSIZI'
+                'plan_id': checkout_ID_USD
             });
         },
         onCancel: function (data) {
@@ -272,7 +293,8 @@
                 "orderID": data.orderID,
                 "billingToken": data.billingToken,
                 "subscriptionID": data.subscriptionID,
-                "facilitatorAccessToken": data.facilitatorAccessToken
+                "facilitatorAccessToken": data.facilitatorAccessToken,
+                "amount": amount_
             }
 
             axios.post('https://payments.peepsx.com/users/paypalpayment', object).then((result) => {
