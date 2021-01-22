@@ -170,14 +170,9 @@
                     </div>
                   </div>
                   <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-sm-12">
                       <div class="form-group">
-                        <input name="name" type="text" class="form-control" id="addressone" placeholder="Address1*">
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <input name="name" type="text" class="form-control" id="addresstwo" placeholder="Address2*">
+                        <input name="name" type="text" class="form-control" id="addressone" placeholder="Address*">
                       </div>
                     </div>
                   </div>
@@ -361,7 +356,7 @@
       lname = document.getElementById('lname').value
       email = document.getElementById('email').value
       addressone = document.getElementById('addressone').value
-      addresstwo = document.getElementById('addresstwo').value
+      addresstwo = "."
       city = document.getElementById('city').value
       state = document.getElementById('state').value
       zipcode = document.getElementById('zipcode').value
@@ -384,10 +379,7 @@
       } else if (addressone == "" || addressone == null) {
         swal({ title: "Enter your first address!", icon: "warning" });
         return
-      } else if (addresstwo == "" || addresstwo == null) {
-        swal({ title: "Enter your second address!", icon: "warning" });
-        return
-      } else if (city == "" || city == null) {
+      }  else if (city == "" || city == null) {
         swal({ title: "Enter city name!", icon: "warning" });
         return
       } else if (!isNaN(city)) {
@@ -530,7 +522,7 @@
         "lname": lname,
         "email": email,
         "addressOne": addressone,
-        "addressTwo": addresstwo,
+        "addressTwo": ".",
         "city": city,
         "state": state,
         "zipcode": zipcode,
@@ -599,7 +591,7 @@
               "lname": lname,
               "email": email,
               "addressOne": addressone,
-              "addressTwo": addresstwo,
+              "addressTwo": ".",
               "city": city,
               "state": state,
               "zipcode": zipcode,

@@ -64,14 +64,9 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-6">
+                <div class="col-sm-12">
                     <div class="form-group">
-                            <input name="name" type="text" class="form-control" id="addressone" placeholder="Address1*">
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                     <div class="form-group">
-                            <input name="name" type="text" class="form-control" id="addresstwo"  placeholder="Address2">
+                            <input name="name" type="text" class="form-control" id="addressone" placeholder="Address*">
                     </div>
                 </div>
             </div>
@@ -425,7 +420,7 @@ function peepsmember() {
     let fname = document.getElementById('fname').value
     let lname = document.getElementById('lname').value
     let addressone = document.getElementById('addressone').value
-    let addresstwo = document.getElementById('addresstwo').value
+    let addresstwo = "."
     let city = document.getElementById('city').value
     let state = document.getElementById('state').value
     let zipcode = document.getElementById('zipcode').value
@@ -446,9 +441,6 @@ function peepsmember() {
         return
     } else if (addressone == "" || addressone == null) {
         swal({ title: "Enter your first address!", icon: "warning" });
-        return
-    } else if (addresstwo == "" || addresstwo == null) {
-        swal({ title: "Enter your second address!", icon: "warning" });
         return
     } else if (city == "" || city == null) {
         swal({ title: "Enter city name!", icon: "warning" });
@@ -488,7 +480,7 @@ function peepsmember() {
                 "fName": fname,
                 "lName": lname,
                 "addressOne": addressone,
-                "addressTwo": addresstwo,
+                "addressTwo": ".",
                 "city": city,
                 "state": state,
                 "zipcode": zipcode,
@@ -521,7 +513,7 @@ function peepsmember() {
                 "fName": fname,
                 "lName": lname,
                 "addressOne": addressone,
-                "addressTwo": addresstwo,
+                "addressTwo": ".",
                 "city": city,
                 "state": state,
                 "zipcode": zipcode,
