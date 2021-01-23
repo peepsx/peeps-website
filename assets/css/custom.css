@@ -431,3 +431,7 @@ a.text-gray:hover {
   line-height: 30px;
   color: rgb(255, 255, 255)
 }
+.card-body img{
+  height: 75px;
+  width: auto;
+}
