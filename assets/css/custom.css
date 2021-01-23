@@ -434,3 +434,7 @@ a.text-gray:hover {
 .font14{
   font-size: 14px;
 }
+.card-body img{
+  width: auto;
+  height: 75px;
+}
