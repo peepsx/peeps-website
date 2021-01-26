@@ -35,8 +35,8 @@
     <table id="tabledata" class="backend-data">
         <tr>
             <th>S.No</th>
-            <th>Amount</th>
-            <th>TransectionId</th>
+            <th>PaymentType</th>
+            <th>SubscriptionId</th>
             <th>PaymentStatus</th>
             <th>Name</th>
             <th>Email</th>
@@ -45,7 +45,7 @@
             <th>City</th>
             <th>State</th>
             <th>Zipcode</th>
-            <th>Country</th>
+            <th>phoneNo</th>
         </tr>
         <tbody id="tbody">
 
@@ -73,13 +73,13 @@
                         html += "<td>" + list[i].subscriptionId + "</td>";
                         html += "<td>" + list[i].subscriptionStatus + "</td>";
                         html += "<td>" + list[i].fName + " " + list[i].lName + "</td>";
+                        html += "<td>" + list[i].email + "</td>";
                         html += "<td>" + list[i].addressOne + "</td>";
                         html += "<td>" + list[i].addressTwo + "</td>";
                         html += "<td>" + list[i].city + "</td>";
                         html += "<td>" + list[i].state + "</td>";
                         html += "<td>" + list[i].zipcode + "</td>";
                         html += "<td>" + list[i].phoneNo + "</td>";
-                        html += "<td>" + list[i].email + "</td>";
                         html += "</tr>";
                     }
                     html += "</table>";
