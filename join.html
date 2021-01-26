@@ -1,198 +1,196 @@
 <!doctype html>
 <html lang="en">
 
-    <head>
-        <meta charset="utf-8">
-        <title>Join the Club | Peeps - decentralize everything.</title>
-        <meta name="title" content="Join the Club | Peeps - decentralize everything.">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="none">
-        <meta name="keywords" content="none">
-        <meta name="author" content="Peeps">
-        <!-- Favicon -->
-        <link rel="shortcut icon" href="assets/img/logo/peepfab.png">
-        
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Nunito:400,400i,600,600i,700,700i%7cPermanent+Marker" rel="stylesheet">
-       
-        <link href="assets/css/theme.css" rel="stylesheet" type="text/css" media="all">
-        <link href="assets/css/custom.css" rel="stylesheet">
-         <!-- stripe payment js -->
-         <script src="https://js.stripe.com/v3/"></script>
-         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-         <!-- Global site tag (gtag.js) - Google Analytics -->
+<head>
+    <meta charset="utf-8">
+    <title>Join the Club | Peeps - decentralize everything.</title>
+    <meta name="title" content="Join the Club | Peeps - decentralize everything.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="none">
+    <meta name="keywords" content="none">
+    <meta name="author" content="Peeps">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="assets/img/logo/peepfab.png">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:400,400i,600,600i,700,700i%7cPermanent+Marker"
+        rel="stylesheet">
+
+    <link href="assets/css/theme.css" rel="stylesheet" type="text/css" media="all">
+    <link href="assets/css/custom.css" rel="stylesheet">
+    <!-- stripe payment js -->
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-08BK2XMZTB"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+        function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
 
         gtag('config', 'G-08BK2XMZTB');
     </script>
-    
-        
-      </head>
-  <body onload="showModal()">
+
+
+</head>
+
+<body onload="showModal()">
     <div id="loading"></div>
 
-    <section class="row no-gutters p-0 height-100 align-items-initial">
-      <div class="col-lg d-lg-flex order-lg-2 height-30">
-        <img src="assets/img/American Flag Waving.jpg" alt="Image" class="bg-image">
-      </div>
-      <div class="col-lg-6 p-0 d-flex bg-white align-items-lg-center">
-        <div class="row no-gutters flex-fill justify-content-center">
-          <div class="col-11 col-md-8 col-lg-10 col-xl-9 py-4">
-            <div class="join-logo">
-                <a class="navbar-brand" href="index.html">
-                    <img alt="Insight" src="assets/img/logo/peepsLogo.png">
-                </a>
-            </div>
-            <h1 class="h2 text-center">Join I AM Freedom.</h1>
-
-
-            <!-- form start-->
-            <div class="row">
-                <div class="col-sm-6">
-                    <div class="form-group">
-                            <input name="name" type="text"  class="form-control" id="fname" placeholder="First Name*">
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="form-group">
-                            <input name="name" type="text" class="form-control" id="lname" placeholder="Last Name*">
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="form-group">
-                            <input name="name" type="text" class="form-control" id="addressone" placeholder="Address*">
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-3">
-                    <div class="form-group">
-                            <input name="name" type="text" class="form-control" id="city"  placeholder="City*">
-                    </div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="form-group">
-                            <input name="name" type="text" class="form-control" id="state"  placeholder="State*">
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                        <div class="form-group">
-                            <input name="name" type="number" class="form-control" id="zipcode"  placeholder="Zip Code*">
+            <!-- Modal  -->
+            <div class="modal fade" role='dialog' data-backdrop="false" id="myModal">    
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="closing_button" onclick="closePaymentModel()">&times;</button>
+    
                         </div>
+                        <div class="modal-body">
+                            <h2 class="modal-title">Subscribe through PayPal</h2>
+                            <div class="payment-box">
+                                <div class="flex-container payment-optn">
+                                    <div id="paypal-button-container" style="width: 200px;"></div>
+    
+                                  
+                                </div>
+                            </div>
+    
+                        </div>
+                        <!-- <div class="modal-footer"> -->
+    
+                    </div>    
                 </div>
-                <!-- <div class="col-sm-3">
+            </div>
+            <!-- ------------------------------modal  ends---------- -->
+
+    <section class="row no-gutters p-0 height-100 align-items-initial">
+        <div class="col-lg d-lg-flex order-lg-2 height-30">
+            <img src="assets/img/American Flag Waving.jpg" alt="Image" class="bg-image">
+        </div>
+        <div class="col-lg-6 p-0 d-flex bg-white align-items-lg-center">
+            <div class="row no-gutters flex-fill justify-content-center">
+                <div class="col-11 col-md-8 col-lg-10 col-xl-9 py-4">
+                    <div class="join-logo">
+                        <a class="navbar-brand" href="index.html">
+                            <img alt="Insight" src="assets/img/logo/peepsLogo.png">
+                        </a>
+                    </div>
+                    <h1 class="h2 text-center">Join I AM Freedom.</h1>
+
+
+                    <!-- form start-->
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <input name="name" type="text" class="form-control" id="fname"
+                                    placeholder="First Name*">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <input name="name" type="text" class="form-control" id="lname" placeholder="Last Name*">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <input name="name" type="text" class="form-control" id="addressone"
+                                    placeholder="Shipping Address*">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <input name="name" type="text" class="form-control" id="city" placeholder="City*">
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <input name="name" type="text" class="form-control" id="state" placeholder="State*">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <input name="name" type="number" class="form-control" id="zipcode"
+                                    placeholder="Zip Code*">
+                            </div>
+                        </div>
+                        <!-- <div class="col-sm-3">
                         <div class="form-group">
                             <input name="name" type="text" class="form-control" id="country"  placeholder="Country*">
                         </div>
                 </div> -->
-            </div>
-            <div class="row">
-                <div class="col-sm-6">
-                    <div class="form-group">
-                            <input name="phone" type="number" class="form-control" id="phoneno"  placeholder="Phone*">
                     </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="form-group">
-                            <input name="email" type="email" class="form-control" id="email"  placeholder="Email*">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <input name="phone" type="number" class="form-control" id="phoneno"
+                                    placeholder="Phone*">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <input name="email" type="email" class="form-control" id="email" placeholder="Email*">
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
 
-                        <!-- subscription type start-->
-                        <div class="row" id="subscriber-type">
-                            <div class="col-sm-4">
-                              <div class="form-group">
+                    <!-- subscription type start-->
+                    <div class="row" id="subscriber-type">
+                        <div class="col-sm-4">
+                            <div class="form-group">
                                 <div class="custom-control custom-radio mb-1">
-                                  <input type="radio" id="Leader" name="amountRadio" class="custom-control-input"
-                                    value="5" checked="checked">
-                                  <label class="custom-control-label font14" for="Leader">Leader ($5/month)</label>
+                                    <input type="radio" id="Leader" name="amountRadio" class="custom-control-input"
+                                        value="5" checked="checked">
+                                    <label class="custom-control-label font14" for="Leader">Leader ($5/month)</label>
                                 </div>
-                              </div>
                             </div>
-                            <div class="col-sm-4">
-                              <div class="form-group">
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
                                 <div class="custom-control custom-radio mb-1">
-                                  <input type="radio" id="Hero" name="amountRadio" class="custom-control-input"
-                                    value="10">
-                                  <label class="custom-control-label font14" for="Hero">Hero ($10/month)</label>
+                                    <input type="radio" id="Hero" name="amountRadio" class="custom-control-input"
+                                        value="10">
+                                    <label class="custom-control-label font14" for="Hero">Hero ($10/month)</label>
                                 </div>
-                              </div>
                             </div>
-                            <div class="col-sm-4">
-                              <div class="form-group">
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
                                 <div class="custom-control custom-radio mb-1">
-                                  <input type="radio" id="Patriot" name="amountRadio" class="custom-control-input"
-                                    value="20">
-                                  <label class="custom-control-label font14" for="Patriot">Patriot ($20/month)</label>
+                                    <input type="radio" id="Patriot" name="amountRadio" class="custom-control-input"
+                                        value="20">
+                                    <label class="custom-control-label font14" for="Patriot">Patriot ($20/month)</label>
                                 </div>
-                              </div>
                             </div>
-                            
-                          </div>
-                          <!-- subscription type end-->
+                        </div>
 
-            <div class="payment-box">
+                    </div>
+                    <!-- subscription type end-->
+
+                    <!-- <div class="payment-box">
                 <div class="flex-container payment-optn">
                       <div id="paypal-button-container"></div>
 
-                      <!-- <button type="button" class="btn btn-primary btn-blue" data-toggle="modal"
-                        data-target="#myModal">Pay With Card</button> -->
+                      <button type="button" class="btn btn-primary btn-blue" data-toggle="modal"
+                        data-target="#myModal">Pay With Card</button>
 
               </div>
-            </div>
-            <div class="become-member" style="margin: 20px 0;">
-                <button class="btn btn-lg btn-primary btn-block mb-1" onclick="peepsmember()">Finalize Membership</button>
-            </div>
-            <!-- form end-->
-            
-          </div>
-        </div>
-      </div>
-       <!-- Modal stripe payment-->
- <div class="modal join-page-modal" id="myModal" role="dialog">
-    <div class="modal-dialog">
-  
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
-                <h4 class="modal-title">Enter Your Card Details.</h4>
-            </div>
-            <div class="modal-body">
-                <form class="stripeform">
-                    <label>
-                        <span>Name</span>
-                        <input name="cardholder-name" class="field" placeholder="Jane Doe" />
-                    </label>
-                    <label>
-                        <span>Card</span>
-                        <div id="card-element" class="field"></div>
-                    </label>
-                    <div class="pay-btn">
-                      <button type="submit" class="btn btn-sm btn-blue">Subscribe Monthly</button>
-                      <button type="button" class="btn btn-sm btn-blue" data-dismiss="modal">Close</button>
-                      </div>
-                    <div class="outcome">
-                        <div class="error"></div>
+            </div> -->
+                    <div class="become-member" style="margin: 20px 0;">
+                        <button id ="continue_to_payment" class="btn btn-lg btn-primary btn-block mb-1" onclick=checkfield()>Continue To Payment</button>
+
+                            <button id ="finalize" style="display: none;" class="btn btn-lg btn-primary btn-block mb-1" onclick=peepsmember()>Finalize Membership</button>
                     </div>
-                    
-                </form>
-                
-            </div>
-            <!-- <div class="modal-footer"> -->
-                
+                    <!-- form end-->
+
+                </div>
             </div>
         </div>
-  
-    </div>
-    <!-- ------------------------------modal stripe ends---------- -->
+
     </section>
 
     <script type="text/javascript" src="assets/js/jquery.min.js"></script>
@@ -213,337 +211,333 @@
     <script type="text/javascript" src="assets/js/custom/custom.js"></script>
     <script src="assets/js/components/hs.modal-window.js"></script>
     <script>
-      function showModal() {
-          document.getElementById("loading").style.display = "none";
-      }
-  </script>
-
-<script>
-    // Rix price
-    axios.get('https://nv6khovry9.execute-api.us-east-1.amazonaws.com/dev/rsn_price_from_bts')
-          .then(function (response) {
-          document.getElementById('rix-price').innerHTML = ` $ ${parseFloat(response.data.data.USD.price).toFixed(4)}`;
-          })
-          .catch(function (error) {
-              console.log(error)
-          });
-
-  </script>
-
-  <!-- -------paypal payment---------- -->
-  <script
-  src="https://www.paypal.com/sdk/js?client-id=Aes7-mZ9lsMi3h-m6lZ-eIQFBaUoF_hpHW1fF8bEZ5a59vZvzeTg75ZZc78g5h5igwkSABHfvlDQk8VQ&vault=true"
-  data-sdk-integration-source="button-factory">
-  </script>
-
-  <script>
-
-      var amount_ = 5;
-      var checkout_ID_USD = 'P-7MG6534019154735TL4FSIZI';
-
-     
-
-    // Render the PayPal button into #paypal-button-container
-    paypal.Buttons({
-      
-
-        //button style
-        style: {
-            layout: 'horizontal',
-            color: 'blue',
-            shape: 'pill',
-            height: 40,
-            label: 'subscribe',
-            tagline: false
-        },
-
-        createSubscription: function (data, actions) {
-
-
-            if (document.getElementById('Leader').checked) {
-                amount_ = document.getElementById('Leader').value;
-                checkout_ID_USD = 'P-7MG6534019154735TL4FSIZI';
-            } else if (document.getElementById('Hero').checked) {
-                amount_ = document.getElementById('Hero').value;
-                checkout_ID_USD = 'P-9EK16695R6077941TMAEVPQY';
-            } else if (document.getElementById('Patriot').checked) {
-                amount_ = document.getElementById('Patriot').value;
-                checkout_ID_USD = 'P-7JB4375962825160WMAEVQFY';
-            }
-
-            return actions.subscription.create({
-                'plan_id': checkout_ID_USD
-            });
-        },
-        onCancel: function (data) {
-            swal({title:"User has cancelled the payment.",icon:'warning'});
+        function showModal() {
             document.getElementById("loading").style.display = "none";
+        }
+    </script>
 
-        },
-        onApprove: function (data, actions) {
-            swal("Your payment is Successful.", `Your SubscriptionId is: ${data.subscriptionID}`, "success");
-            
-            let object = {
-                "orderID": data.orderID,
-                "billingToken": data.billingToken,
-                "subscriptionID": data.subscriptionID,
-                "facilitatorAccessToken": data.facilitatorAccessToken,
-                "amount": amount_
-            }
-
-            axios.post('https://payments.peepsx.com/users/paypalpayment', object).then((result) => {
-                localStorage.setItem("paypalsubId", data.subscriptionID)
-                localStorage.setItem("paypalstatus", "active")
-                localStorage.setItem('paymentType', "paypal")
-            }).catch((error) => {
-                console.log(error)
+    <script>
+        // Rix price
+        axios.get('https://nv6khovry9.execute-api.us-east-1.amazonaws.com/dev/rsn_price_from_bts')
+            .then(function (response) {
+                document.getElementById('rix-price').innerHTML = ` $ ${parseFloat(response.data.data.USD.price).toFixed(4)}`;
             })
+            .catch(function (error) {
+                console.log(error)
+            });
+
+    </script>
+
+    <!-- -------paypal payment---------- -->
+    <script
+        src="https://www.paypal.com/sdk/js?client-id=Aes7-mZ9lsMi3h-m6lZ-eIQFBaUoF_hpHW1fF8bEZ5a59vZvzeTg75ZZc78g5h5igwkSABHfvlDQk8VQ&vault=true"
+        data-sdk-integration-source="button-factory">
+        </script>
+
+    <script>
+
+        var amount_ = 5;
+        var checkout_ID_USD = 'P-7MG6534019154735TL4FSIZI';
+
+
+
+        // Render the PayPal button into #paypal-button-container
+        paypal.Buttons({
+
+
+            //button style
+            style: {
+                layout: 'horizontal',
+                color: 'blue',
+                shape: 'pill',
+                height: 55,
+                width: 55,
+                label: '',
+                tagline: false
+            },
+
+            createSubscription: function (data, actions) {
+
+
+                if (document.getElementById('Leader').checked) {
+                    amount_ = document.getElementById('Leader').value;
+                    checkout_ID_USD = 'P-7MG6534019154735TL4FSIZI';
+                } else if (document.getElementById('Hero').checked) {
+                    amount_ = document.getElementById('Hero').value;
+                    checkout_ID_USD = 'P-9EK16695R6077941TMAEVPQY';
+                } else if (document.getElementById('Patriot').checked) {
+                    amount_ = document.getElementById('Patriot').value;
+                    checkout_ID_USD = 'P-7JB4375962825160WMAEVQFY';
+                }
+
+                return actions.subscription.create({
+                    'plan_id': checkout_ID_USD
+                });
+            },
+            onCancel: function (data) {
+                swal({ title: "User has cancelled the payment.", icon: 'warning' }).then((resp) => {
+                    console.log('payment cancel')
+                    document.getElementById("loading").style.display = "none";
+
+                    $('#myModal').modal('hide');
+
+                })
+
+            },
+            onApprove: function (data, actions) {
+                swal("Your payment is Successful. Proceed For Finalization", `Your SubscriptionId is: ${data.subscriptionID}`, "success").then((res)=>{
+
+                    let object = {
+                    "orderID": data.orderID,
+                    "billingToken": data.billingToken,
+                    "subscriptionID": data.subscriptionID,
+                    "facilitatorAccessToken": data.facilitatorAccessToken,
+                    "amount": amount_
+                }
+
+                axios.post('https://payments.peepsx.com/users/paypalpayment', object).then((result) => {
+                    localStorage.setItem("paypalsubId", data.subscriptionID)
+                    localStorage.setItem("paypalstatus", "active")
+                    localStorage.setItem('paymentType', "paypal")
+                }).catch((error) => {
+                    console.log(error)
+                })
+
+                     closePaymentModel()
+
+                    document.getElementById("continue_to_payment").style.display = "none"
+
+                    document.getElementById("finalize").style.display ="block"
+
+                });
+
+                
+
+            }
+        }).render('#paypal-button-container');
+    </script>
+
+    <!-- =============modal start========== -->
+    <script>
+        // Get the modal
+        var modal = document.getElementById("myModal");
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        function closePaymentModel(){
+            $('#myModal').modal('hide');
+
+            $('#myModal').on('hidden.bs.modal', function () {
+             $(this).find("input,textarea,select").val('').end();
+
+            });
 
         }
-    }).render('#paypal-button-container');
-</script>
+    </script>
+    <!-- ============modal ends=========== -->
 
-<!-- =============modal start========== -->
-<script>
-  // Get the modal
-  var modal = document.getElementById("myModal");
-  // Get the <span> element that closes the modal
-  var span = document.getElementsByClassName("close")[0];
-  // When the user clicks on <span> (x), close the modal
-  span.onclick = function () {
-      modal.style.display = "none";
-  }
-  // When the user clicks anywhere outside of the modal, close it
-  window.onclick = function (event) {
-      if (event.target == modal) {
-          modal.style.display = "none";
-      }
-  }
-</script>
-<!-- ============modal ends=========== -->
 
-<script>
-var stripe = Stripe('pk_live_51H0hOeJ5nSY4c5DAvFEuc6pmikZ6QUcUTTbbe9duhfYsUCadDTukQRP077ZzOS7GSmJVQWZFskgX4tAQVgJmnGCL00Iw2Cy1Tz');
-var elements = stripe.elements({
-    fonts: [
-        {
-            family: 'Open Sans',
-            weight: 400,
-            src: 'local("Open Sans"), local("OpenSans"), url(https://fonts.gstatic.com/s/opensans/v13/cJZKeOuBrn4kERxqtaUH3ZBw1xU1rKptJj_0jans920.woff2) format("woff2")',
-            unicodeRange: 'U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215',
-        },
-    ]
-});
+    <script>
+        function checkfield(){
 
-var card = elements.create('card', {
-    hidePostalCode: true,
-    style: {
-        base: {
-            iconColor: '#F99A52',
-            color: 'black',
-            lineHeight: '48px',
-            fontWeight: 400,
-            fontFamily: '"Open Sans", "Helvetica Neue", "Helvetica", sans-serif',
-            fontSize: '15px',
-            '::placeholder': {
-                color: '#CFD7DF',
+            let fname = document.getElementById('fname').value
+            let lname = document.getElementById('lname').value
+            let addressone = document.getElementById('addressone').value
+            let addresstwo = "."
+            let city = document.getElementById('city').value
+            let state = document.getElementById('state').value
+            let zipcode = document.getElementById('zipcode').value
+            let phoneno = document.getElementById('phoneno').value
+            let email = document.getElementById('email').value
+            if (fname == "" || fname == null) {
+                swal({ title: "Enter first name!", icon: "warning" });
+                return
+            } else if (!isNaN(fname)) {
+                swal({ title: "Enter valid first name!", icon: "warning" });
+                return
+            } else if (lname == "" || lname == null) {
+                swal({ title: "Enter your last name!", icon: "warning" });
+                return
+            } else if (!isNaN(lname)) {
+                swal({ title: "Enter valid last name!", icon: "warning" });
+                return
+            } else if (addressone == "" || addressone == null) {
+                swal({ title: "Enter your first address!", icon: "warning" });
+                return
+            } else if (city == "" || city == null) {
+                swal({ title: "Enter city name!", icon: "warning" });
+                return
+            } else if (!isNaN(city)) {
+                swal({ title: "Enter valid city name!", icon: "warning" });
+                return
+            } else if (state == "" || state == null) {
+                swal({ title: "Enter your state name!", icon: "warning" });
+                return
+            } else if (!isNaN(state)) {
+                swal({ title: "Enter valid state name!", icon: "warning" });
+                return
+            } else if (zipcode == "" || zipcode == null) {
+                swal({ title: "Enter your zipcoe!", icon: "warning" });
+                return
             }
-        },
-    }
-});
-card.mount('#card-element');
-
-function setOutcome(result, name) {
-    // var successElement = document.querySelector('.success');
-    var errorElement = document.querySelector('.error');
-    // successElement.classList.remove('visible');
-    errorElement.classList.remove('visible');
-
-    if (result.token) {
-
-        this.payment(result.token, name)
-
-
-        $('#myModal').modal('hide');
-
-        document.getElementById("loading").style.display = "block";
-
-        // Use the token to create a charge or a customer
-        // https://stripe.com/docs/charges
-        //successElement.querySelector('.token').textContent = result.token.id;
-        //successElement.classList.add('visible');
-    } else if (result.error) {
-        errorElement.textContent = result.error.message;
-        errorElement.classList.add('visible');
-    }
-}
-
-card.on('change', function (event) {
-    setOutcome(event);
-});
-
-document.querySelector('.stripeform').addEventListener('submit', function (e) {
-    e.preventDefault();
-
-    var form = document.querySelector('.stripeform');
-    var extraDetails = {
-        name: form.querySelector('input[name=cardholder-name]').value,
-    };
-    stripe.createToken(card, extraDetails).then(result => {
-        setOutcome(result, extraDetails.name)
-    });
-});
-
-async function payment(token, name) {
-    let object = {
-        "name": name,
-        "token": token.id
-    }
-    axios.post('https://payments.peepsx.com/users/payment', object).then((result) => {
-        localStorage.setItem("stripedata", result.data.data.id)
-        localStorage.setItem("stripestatus", result.data.data.status)
-        localStorage.setItem('paymentType', "Stripe")
-        document.getElementById("loading").style.display = "none";
-        swal("Your payment is Successful.", `Your SubscriptionId is: ${result.data.data.id}`, "success");
-    }).catch((error) => {
-        console.log('error block stripe payment', error)
-    })
-}
-</script>
-
-
-<script>
-function peepsmember() {
-    //commont type
-    let paymenttype = localStorage.getItem('paymentType')
-    //let regemail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    let fname = document.getElementById('fname').value
-    let lname = document.getElementById('lname').value
-    let addressone = document.getElementById('addressone').value
-    let addresstwo = "."
-    let city = document.getElementById('city').value
-    let state = document.getElementById('state').value
-    let zipcode = document.getElementById('zipcode').value
-    // let country = document.getElementById('country').value
-    let phoneno = document.getElementById('phoneno').value
-    let email = document.getElementById('email').value
-    if (fname == "" || fname == null) {
-        swal({ title: "Enter first name!", icon: "warning" });
-        return
-    } else if (!isNaN(fname)) {
-        swal({ title: "Enter valid first name!", icon: "warning" });
-        return
-    } else if (lname == "" || lname == null) {
-        swal({ title: "Enter your last name!", icon: "warning" });
-        return
-    } else if (!isNaN(lname)) {
-        swal({ title: "Enter valid last name!", icon: "warning" });
-        return
-    } else if (addressone == "" || addressone == null) {
-        swal({ title: "Enter your first address!", icon: "warning" });
-        return
-    } else if (city == "" || city == null) {
-        swal({ title: "Enter city name!", icon: "warning" });
-        return
-    } else if (!isNaN(city)) {
-        swal({ title: "Enter valid city name!", icon: "warning" });
-        return
-    } else if (state == "" || state == null) {
-        swal({ title: "Enter your state name!", icon: "warning" });
-        return
-    } else if (!isNaN(state)) {
-        swal({ title: "Enter valid state name!", icon: "warning" });
-        return
-    } else if (zipcode == "" || zipcode == null) {
-        swal({ title: "Enter your zipcoe!", icon: "warning" });
-        return
-    } 
-    // else if (country == "" || country == null) {
-    //     swal({ title: "Enter your country name!", icon: "warning" });
-    //     return
-    // }
-    //  else if (!isNaN(country)) {
-    //     swal({ title: "Enter valid country name!", icon: "warning" });
-    //     return
-    // } 
-    else if (phoneno == "" || phoneno == null) {
-        swal({ title: "Enter your phone number!", icon: "warning" });
-        return
-    } else if (email == "" || email == null) {
-        swal({ title: "Enter your Email!", icon: "warning" });
-        return
-    } else {
-        if (paymenttype == 'Stripe') {
-            let subsid = localStorage.getItem('stripedata')
-            let subsstatus = localStorage.getItem('stripestatus')
-            let objdata = {
-                "fName": fname,
-                "lName": lname,
-                "addressOne": addressone,
-                "addressTwo": ".",
-                "city": city,
-                "state": state,
-                "zipcode": zipcode,
-                // "country": country,
-                "phoneNo": phoneno,
-                "email": email,
-                "paymenttype": paymenttype,
-                "subscriptionId": subsid,
-                "subscriptionStatus": subsstatus
+            else if (phoneno == "" || phoneno == null) {
+                swal({ title: "Enter your phone number!", icon: "warning" });
+                return
+            } else if (email == "" || email == null) {
+                swal({ title: "Enter your Email!", icon: "warning" });
+                return
             }
-            axios.post('https://payments.peepsx.com/users/saveuser', objdata).then((response) => {
-                if (response) {
-                    console.log(response.data)
-                    // swal({ title: `${response.data.message}`, icon: "warning" });
-                    if (response.data.status) {
-                        localStorage.clear()
-                        window.location.replace('welcome.html')
+            else{
+
+
+                $('#myModal').modal('show');
+
+
+            } 
+
+        }
+
+
+        function peepsmember() {
+            //commont type
+            let paymenttype = localStorage.getItem('paymentType')
+            //let regemail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            let fname = document.getElementById('fname').value
+            let lname = document.getElementById('lname').value
+            let addressone = document.getElementById('addressone').value
+            let addresstwo = "."
+            let city = document.getElementById('city').value
+            let state = document.getElementById('state').value
+            let zipcode = document.getElementById('zipcode').value
+            // let country = document.getElementById('country').value
+            let phoneno = document.getElementById('phoneno').value
+            let email = document.getElementById('email').value
+            if (fname == "" || fname == null) {
+                swal({ title: "Enter first name!", icon: "warning" });
+                return
+            } else if (!isNaN(fname)) {
+                swal({ title: "Enter valid first name!", icon: "warning" });
+                return
+            } else if (lname == "" || lname == null) {
+                swal({ title: "Enter your last name!", icon: "warning" });
+                return
+            } else if (!isNaN(lname)) {
+                swal({ title: "Enter valid last name!", icon: "warning" });
+                return
+            } else if (addressone == "" || addressone == null) {
+                swal({ title: "Enter your first address!", icon: "warning" });
+                return
+            } else if (city == "" || city == null) {
+                swal({ title: "Enter city name!", icon: "warning" });
+                return
+            } else if (!isNaN(city)) {
+                swal({ title: "Enter valid city name!", icon: "warning" });
+                return
+            } else if (state == "" || state == null) {
+                swal({ title: "Enter your state name!", icon: "warning" });
+                return
+            } else if (!isNaN(state)) {
+                swal({ title: "Enter valid state name!", icon: "warning" });
+                return
+            } else if (zipcode == "" || zipcode == null) {
+                swal({ title: "Enter your zipcoe!", icon: "warning" });
+                return
+            }
+            // else if (country == "" || country == null) {
+            //     swal({ title: "Enter your country name!", icon: "warning" });
+            //     return
+            // }
+            //  else if (!isNaN(country)) {
+            //     swal({ title: "Enter valid country name!", icon: "warning" });
+            //     return
+            // } 
+            else if (phoneno == "" || phoneno == null) {
+                swal({ title: "Enter your phone number!", icon: "warning" });
+                return
+            } else if (email == "" || email == null) {
+                swal({ title: "Enter your Email!", icon: "warning" });
+                return
+            } else {
+                if (paymenttype == 'Stripe') {
+                    let subsid = localStorage.getItem('stripedata')
+                    let subsstatus = localStorage.getItem('stripestatus')
+                    let objdata = {
+                        "fName": fname,
+                        "lName": lname,
+                        "addressOne": addressone,
+                        "addressTwo": ".",
+                        "city": city,
+                        "state": state,
+                        "zipcode": zipcode,
+                        // "country": country,
+                        "phoneNo": phoneno,
+                        "email": email,
+                        "paymenttype": paymenttype,
+                        "subscriptionId": subsid,
+                        "subscriptionStatus": subsstatus
                     }
-                } else {
-                    swal({ title: "Something went wrong,Please try again!", icon: "warning" });
+                    axios.post('https://payments.peepsx.com/users/saveuser', objdata).then((response) => {
+                        if (response) {
+                            // swal({ title: `${response.data.message}`, icon: "warning" });
+                            if (response.data.status) {
+                                localStorage.clear()
+                                window.location.replace('welcome.html')
+                            }
+                        } else {
+                            swal({ title: "Something went wrong,Please try again!", icon: "warning" });
+                        }
+                    }).catch((error) => {
+                        console.log(error)
+                    })
                 }
-            }).catch((error) => {
-                console.log(error)
-            })
-        }
-        else if (paymenttype == 'paypal') {
-            let subsid = localStorage.getItem("paypalsubId")
-            let subsstatus = localStorage.getItem("paypalstatus")
-            let objdata = {
-                "fName": fname,
-                "lName": lname,
-                "addressOne": addressone,
-                "addressTwo": ".",
-                "city": city,
-                "state": state,
-                "zipcode": zipcode,
-                // "country": country,
-                "phoneNo": phoneno,
-                "email": email,
-                "paymenttype": paymenttype,
-                "subscriptionId": subsid,
-                "subscriptionStatus": subsstatus
+                else if (paymenttype == 'paypal') {
+                    let subsid = localStorage.getItem("paypalsubId")
+                    let subsstatus = localStorage.getItem("paypalstatus")
+                    let objdata = {
+                        "fName": fname,
+                        "lName": lname,
+                        "addressOne": addressone,
+                        "addressTwo": ".",
+                        "city": city,
+                        "state": state,
+                        "zipcode": zipcode,
+                        // "country": country,
+                        "phoneNo": phoneno,
+                        "email": email,
+                        "paymenttype": paymenttype,
+                        "subscriptionId": subsid,
+                        "subscriptionStatus": subsstatus
+                    }
+                    axios.post('https://payments.peepsx.com/users/saveuser', objdata).then((response) => {
+                        if (response) {
+                            // swal({ title: "You are peeps member now.", icon: "success" });
+                            localStorage.clear()
+                            window.location.replace('welcome.html')
+
+                        } else {
+                            swal({ title: "Something went wrong,Please try again!", icon: "warning" });
+                        }
+                    }).catch((error) => {
+                        console.log(error)
+                    })
+                }
+                else {
+                    swal({ title: "Please complete your payment!", icon: "warning" });
+                }
             }
-            axios.post('https://payments.peepsx.com/users/saveuser', objdata).then((response) => {
-                if (response) {
-                    console.log(response.data)
-                    // swal({ title: "You are peeps member now.", icon: "success" });
-                    localStorage.clear()
-                    window.location.replace('welcome.html')
-
-                } else {
-                    swal({ title: "Something went wrong,Please try again!", icon: "warning" });
-                }
-            }).catch((error) => {
-                console.log(error)
-            })
         }
-        else {
-            swal({ title: "Please complete your payment!", icon: "warning" });
-        }
-    }
-}
-</script>
+    </script>
 
-  </body>
+</body>
+
 </html>
